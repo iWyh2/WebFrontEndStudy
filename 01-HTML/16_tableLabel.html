@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tableLabel</title>
+</head>
+<body>
+    <!-- 
+        table 表格
+        tr 行
+        th 表头格
+        td 内容格
+        table嵌套tr 有几行表格就有几行tr
+        tr嵌套th或td 第一行可以是th表头
+        表格默认没有边框线，需要加上border属性
+     -->
+     <table border="1">
+        <tr>
+            <th>姓名</th>
+            <th>C</th>
+            <th>C++</th>
+            <th>Java</th>
+            <th>Go</th>
+            <th>Python</th>
+        </tr>
+        <tr>
+            <td>iWyh2</td>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Alen</td>
+            <td>97</td>
+            <td>96</td>
+            <td>94</td>
+            <td>91</td>
+            <td>93</td>
+        </tr>
+        <tr>
+            <td>Alk</td>
+            <td>89</td>
+            <td>92</td>
+            <td>97</td>
+            <td>88</td>
+            <td>98</td>
+        </tr>
+     </table>
+     <hr>
+     <!-- 
+        表格结构标签 让语义更清晰
+        thead 表格头部
+        tbody 表格主体
+        tfoot 表格底部
+        一般可以省略表格结构标签
+      -->
+      <table border="1">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>C</th>
+                <th>C++</th>
+                <th>Java</th>
+                <th>Go</th>
+                <th>Python</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>iWyh2</td>
+                <td colspan="5">100</td>
+            </tr>
+            <tr>
+                <td>Alen</td>
+                <td>97</td>
+                <td rowspan="2">96</td>
+                <td>94</td>
+                <td>91</td>
+                <td>93</td>
+            </tr>
+            <tr>
+                <td>Alk</td>
+                <td>89</td>
+                <td>97</td>
+                <td>88</td>
+                <td>98</td>
+            </tr>
+        </tbody>
+        <!-- 
+            合并单元格
+            从左/上开始合并
+            添加属性，取值(合并的单元格数量)合并
+            然后删除多余格
+                * 合并行：从上开始，最上面的格加rowspan
+                * 合并列：从左开始，最左面的格加colspan
+            不能跨[表格结构标签]合并
+         -->
+        <tfoot>
+            <tr>
+                <td>平均</td>
+                <td colspan="5">95</td>
+            </tr>
+        </tfoot>
+     </table>
+</body>
+</html>
