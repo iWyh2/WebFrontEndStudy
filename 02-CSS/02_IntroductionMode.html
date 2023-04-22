@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS的三种引入方式</title>
+    <!-- 
+        2.外链式引入
+        rel：关系 为样式表
+        href：样式表位置
+        实际开发用的多
+     -->
+    <link rel="stylesheet" href="./02_ExternalIntroduction.css">
+    <!-- 
+        1.嵌入式引入
+        学习时快速定位使用的多
+     -->
+    <style>
+        span {
+            color: aqua;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <span>span</span>
+    <div>div</div>
+    <!-- 
+        3.行内式引入
+        style属性内填css属性键值对
+        针对单一元素标签，配合JS使用的多
+     -->
+    <p style="color: red;font-size: 40px;">p</p>
+</body>
+</html>
