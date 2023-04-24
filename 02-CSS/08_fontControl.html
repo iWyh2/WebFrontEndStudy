@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字体控制属性</title>
+    <style>
+        /* 
+            字体控制属性：
+                * font-size 文字大小
+                    * ??px
+                * font-weight 文字粗细
+                    * 400正常/700加粗
+                * font-style 文字样式，是否倾斜
+                    * normal正常/italic倾斜
+                * font-family 文字字体
+                    * 字体1, 字体2, ...;
+                    从左到右依次生效
+                    * sans-serif 无衬线字体
+                * line-height 文字行高
+                    * ??px/?(倍文字大小)
+                    * 单行文字垂直居中：行高属性值=盒子高度属性值
+            复合属性font：
+                * font: 是否倾斜 是否加粗 字号/行高 字体
+                字号和字体必须写 不然无法生效
+        */
+        .font1 {
+            font-size: 30px;
+            font-weight: 700;
+            font-style: italic;
+            font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+            line-height: 40px;
+        }
+        .font2 {
+            font: normal 400 20px/100px 楷体;
+        }
+        .div1 {
+            background-color: pink;
+            height: 100px;
+        }
+        .div2 {
+            background-color: skyblue;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1 font1">this is the div1</div>
+    <div class="div2 font2">this is the div2</div>
+</body>
+</html>
