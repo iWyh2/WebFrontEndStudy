@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本控制属性</title>
+    <style>
+        /* 
+            1.text-indent: 文本缩进
+                * ??px / ??em(当前标签字号大小)
+            2.text-align: 文本对齐
+                * center / left / right
+                * 控制内容的对齐方式，此属性要设置给内容的父级标签
+                * 内容可以是图片 文字 等
+            3.text-decoration 文本修饰线
+                * none 没有下划线，可以清除已有的下划线
+                * underline 加下划线
+                * line-through 加删除线
+                * overline 加上划线
+            4.color 文本颜色
+                * 关键字
+                * rgb
+                * rgba a为透明度(取值0-1)
+                * 16进制
+        */
+        h1 {
+            text-align: center;
+        }
+        div {
+            text-align: center;
+            text-indent: 2em;
+        }
+        span {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>iWyh2</h1>
+    <div>
+        <p>iWyh2从2021开始，<span>自学软件开发</span>。目前已经掌握了多门编程语言，例如：C/C++，Java，Go，Python，前端HTML/CSS/JS等。</p>
+    </div>
+</body>
+</html>
