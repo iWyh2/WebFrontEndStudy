@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优先级</title>
+    <style>
+        /* 
+            优先级也叫权重
+            对一个标签使用了多种选择器时
+            看哪种选择器的优先级高
+            基础选择器：
+                通配符 < 标签 < 类 < id < 行内样式 < !important
+                !important将权重提到最高
+            复合选择器：
+                行内样式->id选择器个数->类选择器个数->标签选择器个数
+                从左到右依次比较选择器个数
+                同一级个数多的优先级高
+                个数相同向后比较
+                !important权重最高
+                继承权重最低
+        */
+        /* * {
+            color: red;
+        }
+
+        div {
+            color: blue;
+        }
+
+        .box {
+            color: black;
+        }
+
+        #w22 {
+            color: green;
+        }
+
+        * {
+            color: skyblue !important;
+        } */
+        /* 
+            基础选择器：
+                选中的标签范围越大，优先级就越低
+        */
+        /* 
+            符合选择器：
+                权重叠加
+        */
+        .box1 .box2 div {
+            color: blue;
+        }
+        div #c3 {
+            color: green;
+        }
+        #c1 .box3 {
+            color: orange;
+        }
+        /* 
+            优先级用于解决权重问题
+            不会刻意去写
+        */
+    </style>
+</head>
+<body>
+    <!-- <div class="box" id="w22" style="color: pink;">this is the div</div> -->
+    <div id="c1" class="box1">
+        <div id="c2" class="box2">
+            <div id="c3" class="box3">
+                this is the div
+            </div>
+        </div>
+    </div>
+</body>
+</html>
