@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景属性</title>
+    <style>
+        /* 
+            背景属性：
+                *background-color 背景颜色
+                    *四种颜色取值
+                *background-image 背景图片
+                    *url()
+                *background-repeat 背景平铺方式
+                    *repeat(默认)/no-repeat/repeat-x/repeat-y
+                *background-position 背景位置
+                    *left/right/center
+                    *top/bottom/center
+                    *(+-)??px (+-)??px
+                *background-size 背景缩放
+                    *cover(等比例铺满不留白)/contain(等比例铺满可能会留白)
+                    *??%
+                    *??px
+                *background-attachment 背景固定
+                    *fixed
+        */
+        .box1 {
+            width: 400px;
+            height: 400px;
+            text-align: center;
+            background-color: pink;
+            background-image: url(https://th.bing.com/th/id/R.13f4136ebad4649906e25c940029dc8a?rik=bXVnq%2f7ffsE6lg&riu=http%3a%2f%2fwww.benscoloringpages.com%2fbuttons%2fbodybuildingsm.jpg&ehk=%2f1ogChVhHn6FhIW9tPkGPIFGti8cWSyIt5ic72GlXAQ%3d&risl=&pid=ImgRaw&r=0);
+            background-repeat: no-repeat;/*不平铺*/
+            background-position: center;/*居中*/
+            background-size: cover;/*等比例铺满不留白*/
+            /* 
+                background-attachment属性
+                一般用于固定大背景图且有滚动条时
+                对于小背景图如果使用了background-position和background-size
+                可能会导致这两个属性无法正常显示
+            */
+            /* background-attachment: fixed; */
+        }
+        .box2 {
+            width: 400px;
+            height: 400px;
+            text-align: center;
+            /* 
+                背景复合属性
+                background: 背景色 背景图 背景图平铺方式 背景图位置/背景图缩放 背景图固定
+                不区分顺序
+            */
+            background: pink url(https://th.bing.com/th/id/R.13f4136ebad4649906e25c940029dc8a?rik=bXVnq%2f7ffsE6lg&riu=http%3a%2f%2fwww.benscoloringpages.com%2fbuttons%2fbodybuildingsm.jpg&ehk=%2f1ogChVhHn6FhIW9tPkGPIFGti8cWSyIt5ic72GlXAQ%3d&risl=&pid=ImgRaw&r=0) no-repeat center/cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        this is the div label
+    </div>
+    <div class="box2">
+        this is the div label
+    </div>
+</body>
+</html>
