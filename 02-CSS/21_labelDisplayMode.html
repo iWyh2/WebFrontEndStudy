@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签显示模式</title>
+    <style>
+        /* 
+            1.块级-div..
+                默认父级100%宽度
+                独占一行
+                设置宽高可以生效
+            2.行内-span..  
+                一行多个
+                设置宽高不生效
+                宽高由内容撑开
+            3.行内块-img..
+                一行多个
+                设置宽高可以生效
+                宽高可以由内容撑开
+            
+            display属性: 改变元素的显示模式
+                *block 块级
+                *inline 行内
+                *inline-block 行内块
+        */
+        .box1 {
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+        }
+        .box2 {
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+        }
+        .box3 {
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+        .box4 {
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">this is the div</div>
+    <div class="box2">this is the div</div>
+    <span class="box3">this is the span</span>
+    <span class="box4">this is the span</span>
+    <img class="pic1" src="https://th.bing.com/th/id/OIP.q_7p5de46akzdXBL07f9KgAAAA?w=176&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Vue.js">
+    <img class="pic2" src="https://th.bing.com/th/id/OIP.q_7p5de46akzdXBL07f9KgAAAA?w=176&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Vue.js">
+</body>
+</html>
