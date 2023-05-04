@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素选择器</title>
+    <style>
+        /* 
+            给选中的元素 添加 子级虚拟元素
+        */
+        div::before {
+            content: "iWyh2";
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            display: inline-block;
+        }
+        div::after {
+            content: "全栈工程师";
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            display: inline-block;
+        }
+        /* 
+            1. content属性必须存在
+                用来设置伪元素的内容
+                否则伪元素选择器不生效
+                没有内容就设置为""空字符串
+            2. 伪元素默认是行内显示模式
+            3. 权重和标签选择器相同
+        */
+    </style>
+</head>
+<body>
+    <div>是</div>
+</body>
+</html>
