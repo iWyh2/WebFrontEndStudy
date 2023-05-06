@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型</title>
+    <style>
+        /* 
+            盒子模型
+            1. 组成：
+                * width+height：内容区域
+                * padding：内边距-出现在内容与盒子边缘之间
+                * border：边框线-盒子边框粗细
+                * margin：外边距-出现在盒子外面
+        */
+        .box {
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 1px;
+            margin: 10px;
+        }
+        /* 
+            边框线
+            1.四个方向
+                属性名：border（bd）
+                属性值：边框线粗细 线条样式 颜色（不区分顺序）
+                    线条样式：实线solid/虚线dashed/点线dotted
+            2.单方向边框线
+                属性名：border-方位名词（bd+方位名词首字母，例如，bdl）
+                属性值：边框线粗细 线条样式 颜色（不区分顺序）
+        */
+        .justBorder1 {
+            background-color: pink;
+            height: 200px;
+            width: 200px;
+            border: 1px solid #000;
+        }
+        .justBorder2 {
+            background-color: pink;
+            height: 200px;
+            width: 200px;
+            border-top: 10px solid orange;
+            border-bottom: 5px dotted #000;
+            border-left: 1px dashed red;
+            border-right: 4px solid green;
+        }
+        /* 
+            内边距
+            1.四个方向
+                属性名：padding
+                属性值：
+                    ??px/四个方向一样内边距
+                    ??px ??px/上下 左右分别设置内边距
+                    ??px ??px ??px/上 左右 下分别设置内边距
+                    ??px ??px ??px ??px/上 右 下 左分别设置内边距
+                * 从上开始顺时针赋值，当前方向没有数值则与对面取值相同
+            2.单方向内边距
+                属性名：padding-方位名词
+                属性值：??px
+            添加 padding 会撑大盒子
+        */
+        .justPadding1 {
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+        }
+        .justPadding2 {
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+        }
+        .justPadding3 {
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            padding: 20px 20px 20px 20px;
+        }
+        .justPadding4 {
+            background-color: skyblue;
+            width: 200px;
+            height: 200px;
+            padding: 20px 20px;
+        }
+        /* 
+            盒子尺寸计算
+            * 默认情况：盒子尺寸 = 内容尺寸 + border 尺寸 + padding尺寸
+            * 给盒子加 border / padding 会撑大盒子
+            解决：
+                1.手动做减法：减掉 border and padding 的尺寸
+                2.开启內减模式：box-sizing: border-box 
+                    使盒子大小为设置的width和height（内容尺寸）大小
+                    内容区的实际宽度会是 width 减去 border + padding 的计算值
+        */
+        .justBoxSizeCaculate1 {
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 5px solid red;
+            box-sizing: border-box;
+        }
+        .justBoxSizeCaculate2 {
+            background-color: pink;
+            width: 150px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid red;
+        }
+        /* 
+            外边距
+            1.四个方向
+                属性名：margin
+                属性值：
+                    ??px/四个方向一样外边距
+                    ??px ??px/上下 左右分别设置外边距
+                    ??px ??px ??px/上 左右 下分别设置外边距
+                    ??px ??px ??px ??px/上 右 下 左分别设置外边距
+                * 从上开始顺时针赋值，当前方向没有数值则与对面取值相同
+            2.单方向外边距
+                属性名：margin-方位名词
+                属性值：??px
+            添加 margin 不会撑大盒子尺寸
+            版心居中效果：（盒子水平居中）
+                * margin 左右值 为 auto（盒子要有宽度）
+        */
+        .justMargin1 {
+            margin: 0 auto;
+        }
+        .justMargin2 {
+            margin: 10px 20px 30px 40px;
+        }
+        .justMargin3 {
+            margin-top: 10px;
+            margin-right: 20px;
+            margin-bottom: 30px;
+            margin-left: 40px;
+        }
+        /* 
+            清除默认样式
+                1.清除内外边距
+                    padding: 0;
+                    margin: 0;
+                2.去除默认列表项目符号圆点（li）
+                    list-style: none
+                3.开启內减模式，防止padding撑大盒子
+                    box-sizing: border-box;
+        */
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        /* 
+            元素溢出
+            控制溢出元素的内容的显示方式
+            属性名：overflow
+            属性值：
+                1.hidden 溢出就隐藏
+                2.scroll 不管是否溢出都出现滚动条
+                3.auto 只有溢出时才会有滚动条
+        */
+        .justOverflow {
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+            overflow: hidden;
+        }
+        /* 
+            外边距问题
+            1.合并现象
+                场景：垂直排列的兄弟元素，上下 margin 会合并
+                现象：取两个 margin 中的较大值生效
+                解决：若需要给两个上下盒子之间添加margin，那么只需要给一个盒子添加即可
+            2.外边距塌陷
+                场景：父子级的标签，子级的添加 上外边距 会产生塌陷问题
+                现象：导致父级一起向下移动
+                解决：
+                    * 取消子级margin，父级设置padding（常用）
+                    已经设置了子级的margin时：
+                        * 父级设置 overflow: hidden
+                        * 父级设置 border-top
+                        解决原理为 让浏览器找到父级标签的正确位置
+        */
+        .one {
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+            margin-bottom: 50px;
+        }
+        .two {
+            height: 200px;
+            width: 200px;
+            background-color: skyblue;
+            margin-top: 30px;
+        }
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /* padding-top: 100px; */
+            /* border-top: 1px solid #000; */
+            overflow: hidden;
+        }
+        .son {
+            width: 50px;
+            height: 50px;
+            background-color: skyblue;
+            margin-top: 100px;
+        }
+        /* 
+            行内元素 – 内外边距问题（span）
+                场景：行内元素添加 margin 和 padding，无法改变元素垂直位置
+                                                    （水平方向依然生效）
+                解决方法：给行内元素添加 line-height 可以改变垂直位置
+        */
+        .aSpan {
+            margin: 20px;
+            padding: 20px;
+            line-height: 96px;
+        }
+        /* 
+            圆角
+            作用：设置元素的外边框为圆角
+                属性名：border-radius
+                属性值：数字+px / 百分比
+            提示：属性值是圆角半径，设置负值无效
+            1.四个方向
+                属性名：border-radius
+                属性值：
+                    ??px/??% 四个方向一样圆角
+                    ??px ??px/左上右下 右上左下分别设置圆角
+                    ??px ??px ??px/左上 右上左下 右下分别设置圆角
+                    ??px ??px ??px ??px/左上 右上 右下 左下分别设置圆角
+                * 从左上角开始顺时针赋值，当前角没有数值则与对角取值相同
+            2.单方向圆角
+                属性名：
+                    border-top-left-radius
+                    border-top-right-radius
+                    border-bottom-right-radius
+                    border-bottom-left-radius
+                属性值：??px/??%
+            应用：
+                * 正圆形状：给【正方形盒子】设置圆角属性值为 宽高的一半 / 50%
+                    圆的半径最大为元素宽高的的一倍
+                * 胶囊形状：给【长方形盒子】设置圆角属性值为 盒子高度的一半
+                * 椭圆形状：给盒子设置圆角属性带上x y偏移量 x=width y=height
+                    Border-top-left-raidus: x y;
+        */
+        .round {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            text-align: center;
+            line-height: 200px;
+            border-radius: 50%;
+        }
+        .capsule-shape {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 50px;
+        }
+        .oval {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+            border-top-left-radius: 200px 100px;
+            border-top-right-radius: 200px 100px;
+            border-bottom-right-radius: 200px 100px;
+            border-bottom-left-radius: 200px 100px;
+        }
+        /* 
+            盒子阴影
+            作用：给元素设置阴影效果
+            属性名：box-shadow
+            属性值：X 轴偏移量 Y 轴偏移量 模糊半径 扩散半径 颜色 内外阴影
+            注意：
+                X 轴偏移量 和 Y 轴偏移量 必须书写
+                默认是外阴影，内阴影需要添加 inset
+                常用外阴影
+                x越大越向右
+                y越大越向下
+                模糊半径越大越模糊
+                扩散半径越大阴影越大
+                颜色一般选rgba带透明度
+        */
+        .shadow {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            margin: 0 auto;
+            box-shadow: 5px 10px 10px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="box justMargin1">this is the div</div>
+    <div class="justBorder1">this is the div</div>
+    <div class="justBorder2">this is the div</div>
+    <div class="justPadding1">this is the div</div>
+    <div class="justPadding2">this is the div</div>
+    <div class="justPadding3">this is the div</div>
+    <div class="justPadding4">this is the div</div>
+    <div class="justBoxSizeCaculate1 justMargin2">this is the div</div>
+    <div class="justBoxSizeCaculate2 justMargin3">this is the div</div>
+    <div class="justOverflow">divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv
+        divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv
+        divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv
+        divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv
+        divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv
+        divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv
+        divdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdivdiv</div>
+    <div class="one">one</div>
+    <div class="two">two</div>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <span class="aSpan">span</span><span class="aSpan">span</span>
+    <div class="round">round</div>
+    <div class="capsule-shape">capsule-shape</div>
+    <div class="oval">ovel</div>
+    <div class="shadow">this is the div</div>
+</body>
+</html>
