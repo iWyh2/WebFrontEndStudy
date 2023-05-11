@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex布局</title>
+    <style>
+        /* 
+            Flex 布局也叫弹性布局，是浏览器提倡的布局模型
+            非常适合结构化布局，提供了强大的空间分布和对齐能力。
+            Flex 模型不会产生浮动布局中脱标现象，布局网页更简单、更灵活。
+        */
+        /* 
+            1.flex体验
+            给父级添加display: flex
+        */
+        .box {
+            display: flex;
+            height: 300px;
+            background-color: pink;
+        }
+        .box div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        /* 
+            2.flex组成
+                设置方式：给父元素设置 display: flex（df），子元素可以自动挤压或拉伸
+                组成部分：
+                    * 弹性容器（父级元素）
+                    * 弹性盒子（子级元素）
+                    * 主轴：默认在水平方向
+                    * 侧轴 / 交叉轴：默认在垂直方向
+                加了display: flex的就是弹性容器
+                子级就是弹性盒子
+                弹性盒子（子级）沿着主轴排列
+                弹性盒子可以根据父级自动变大变小，此时设置在子级上的css部分会失效
+                如果弹性盒子没有高度，那么自动就是父级的高度铺满
+        */
+        /* 
+            3.主轴与侧轴的对齐方式
+                主轴对齐方式
+                属性名：justify-content
+                属性值：
+                    * flex-start：弹性盒子从主轴起点开始排列（默认值）
+                    * flex-end：弹性盒子从主轴终点开始排列
+                    * center：弹性盒子沿主轴居中排列
+                    * space-between：弹性盒子沿主轴均匀排列，盒子与盒子间距相等
+                    * space-around：弹性盒子沿主轴均匀排列，盒子两侧间距相等
+                    * space-evenly：弹性盒子沿主轴均匀排列，盒子与盒子，盒子与容器间距相等
+                侧轴对其方式
+                属性名：
+                    * align-items：当前弹性容器内所有弹性盒子的侧轴对齐方式（给弹性容器设置）当弹性盒子设置了align-self 属性时，容器的align-items 值则不再对它生效
+                    * align-self：单独控制某个弹性盒子的侧轴对齐方式（给弹性盒子设置）
+                属性值：
+                    * stretch：弹性盒子沿侧轴拉伸至铺满容器（盒子没有设置高度时生效，且为默认值）
+                    * center：弹性盒子沿侧轴居中排列
+                    * flex-start：弹性盒子从侧轴起点开始排列
+                    * flex-end：弹性盒子从侧轴终点开始排列
+        */
+        .box1 {
+            display: flex;
+            border: 1px solid #000;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 300px;
+            background-color: pink;
+        }
+        .box1 div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .box2 {
+            display: flex;
+            border: 1px solid #000;
+            justify-content: flex-end;
+            align-items: flex-end;
+            height: 300px;
+            background-color: pink;
+        }
+        .box2 div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .box3 {
+            display: flex;
+            border: 1px solid #000;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background-color: pink;
+        }
+        .box3 div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .box4 {
+            border: 1px solid #000;
+            display: flex;
+            justify-content: space-around;
+            /* align-items: stretch; */
+            height: 300px;
+            background-color: pink;
+        }
+        .box4 div {
+            width: 100px;
+            /* height: 100px; */
+            background-color: skyblue;
+        }
+        .box5 {
+            border: 1px solid #000;
+            display: flex;
+            justify-content: space-evenly;
+            height: 300px;
+            background-color: pink;
+        }
+        .box5 div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .box5 div:nth-child(2) {
+            align-self: center;
+        }
+        .box6 {
+            border: 1px solid #000;
+            display: flex;
+            justify-content: space-between;
+            height: 300px;
+            background-color: pink;
+        }
+        .box6 div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .box6 div:nth-child(2) {
+            align-self: flex-end;
+        }
+        /* 
+            4.修改主轴方向
+            主轴默认在水平方向，侧轴默认在垂直方向
+            修改主轴方向，侧轴随之更改
+            属性名：flex-direction
+            属性值：
+                * row：水平方向，从左往右排列（默认值）
+                * column：垂直方向，从上往下排列（常用）
+                * row-reverse：水平方向，从右往左
+                * column-reverse：垂直方向，从下往上
+        */
+        .box7 {
+            border: 1px solid #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background-color: pink;
+        }
+        .box7 div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        /* 
+            5.弹性伸缩比
+            作用：控制弹性盒子的主轴方向的尺寸
+                * 主轴在水平方向就是控制盒子的宽度占比
+                * 主轴在垂直方向就是控制盒子的高度占比
+                * 设置在弹性盒子身上
+            默认情况下，主轴方向尺寸靠内容撑开，侧轴方向没有设置尺寸时默认拉伸铺满
+            属性名：flex
+            属性值：整数数字，表示占用父级剩余尺寸的份数
+        */
+        .box8 {
+            border: 1px solid #000;
+            display: flex;
+            height: 300px;
+            background-color: pink;
+        }
+        .box8 div {
+            border: 1px solid #000;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .box8 div:nth-child(1) {
+            flex: 1;
+        }
+        .box8 div:nth-child(2) {
+            flex: 2;
+        }
+        .box8 div:nth-child(3) {
+            flex: 3;
+        }
+        .box9 {
+            border: 1px solid #000;
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+            background-color: pink;
+        }
+        .box9 div {
+            border: 1px solid #000;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+        .box9 div:nth-child(1) {
+            flex: 1;
+        }
+        .box9 div:nth-child(2) {
+            flex: 2;
+        }
+        .box9 div:nth-child(3) {
+            flex: 3;
+        }
+        /* 
+            6.弹性盒子换行
+            弹性盒子可以自动挤压或拉伸，默认情况下，所有弹性盒子都在一行显示
+            想要实现当弹性容器宽度不足以容纳多个弹性盒子宽度换行显示时，需要这个属性
+            实现多行显示弹性盒子
+            属性名：flex-wrap
+            属性值
+                * wrap：换行
+                * nowrap：不换行（默认）
+        */
+        /* 
+            7.（多）行内对齐方式
+            当弹性盒子有多行时，可以对每一行的弹性盒子设置行与行之间的对齐方式
+            属性名：align-content
+            属性值：（与主轴对齐方式取值一致）
+                * flex-start：弹性盒子从侧轴起点开始排列
+                * flex-end：弹性盒子从侧轴终点开始排列
+                * center：弹性盒子沿侧轴居中排列
+                * space-between：弹性盒子沿侧轴均匀排列，盒子与盒子间距相等
+                * space-around：弹性盒子沿侧轴均匀排列，盒子两侧间距相等
+                * space-evenly：弹性盒子沿侧轴均匀排列，盒子与盒子，盒子与容器间距相等
+            注意：该属性对单行弹性盒子模型无效，单行弹性盒子应该设置align-items
+            经过实验得出，当只有单行弹性盒子时设置了flex-wrap: wrap，那么此时align-content也会对单行弹性盒子生效，但值只有三个效果：flex-satrt/flex-end/center，其余的space-xxx效果与center一致
+        */
+        .box10 {
+            display: flex;
+            /* flex-direction: column; */
+            /* flex-wrap: wrap; */
+            align-content: flex-start;
+            width: 800px;
+            height: 400px;
+            background-color: pink;
+        }
+        .box10 div {
+            width: 200px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div> -->
+    <div class="box1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box2">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box4">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box5">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box6">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box7">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box8">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box9">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div class="box10">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+
+</html>
