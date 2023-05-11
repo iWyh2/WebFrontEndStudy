@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        /* 
+            浮动：让【块级元素】水平排列
+            属性名：float
+            属性值：left / right
+            特点：
+                * 浮动后的盒子【顶对齐】
+                * 浮动后的盒子【具备行内块特点】
+                * 浮动后的盒子【不占用标准流的位置】也就是浮动盒子的脱标现象
+                * 如果父级宽度不够，浮动的盒子会掉下来，换行显示
+            浮动的本质作用是是实现图文混排效果
+        */
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            float: left;
+        }
+
+        .two {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            float: left;
+            /* float: right; */
+        }
+
+        /* 
+            浮动布局的使用案例：产品布局
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .banner {
+            margin: 50px auto;
+            width: 1226px;
+            height: 628px;
+            background-color: pink;
+        }
+
+        .banner .left {
+            float: left;
+            width: 234px;
+            height: 628px;
+            background-color: skyblue;
+        }
+
+        .banner .right {
+            float: right;
+            width: 978px;
+            height: 628px;
+            background-color: brown;
+        }
+
+        /* 
+            li默认为块级元素
+            需要浮动使其一行排列
+        */
+        .right li {
+            float: left;
+            margin-right: 14px;
+            margin-bottom: 14px;
+            width: 234px;
+            height: 300px;
+            background-color: orange;
+        }
+
+        .right li:nth-child(4n) {
+            margin-right: 0;
+        }
+
+        /* 
+            清除浮动
+            场景：浮动元素会脱标，如果父级没有高度，子级无法撑开父级高度（可能导致页面布局错乱）
+            解决方法：清除浮动（清除浮动带来的影响）
+            方法一：额外标签法
+                在父元素内容的最后添加一个块级元素，设置 CSS 属性 clear: both
+                both意为清除左右两侧的浮动影响
+                clear还可以设置left / right，消除单侧浮动影响
+            方法二：单伪元素法
+                原理与额外标签法一致
+                只是不是我们自己加块级标签，而是变为了设置伪元素clearfix::after
+                对此伪元素设置display: block&&clear: both
+                同时clearfix类设置到父级身上使用
+            方法三：双伪元素法（推荐）
+                依然是加伪元素
+                但是是加两个伪元素
+                after用于清除浮动
+                before用于解决外边距塌陷问题
+                同时解决两种问题
+            方法四：overflow法
+                父元素添加overflow: hidden
+                原理就是加上了这个属性之后
+                会让浏览器去检查这个元素的边界
+                使得浮动的子级能正常撑开父级
+        */
+        .top {
+            margin: 10px auto;
+            width: 1200px;
+            /* 父级没有高度 */
+            /* height: 300px; */
+            background-color: pink;
+        }
+
+        .left {
+            float: left;
+            width: 200px;
+            height: 300px;
+            background-color: skyblue;
+        }
+
+        .right {
+            float: right;
+            width: 950px;
+            height: 300px;
+            background-color: orange;
+        }
+
+        .bottom {
+            height: 100px;
+            background-color: brown;
+        }
+
+        /* 
+            额外标签法
+            设置类名为clearfix
+            只要是clearfix那就是清除浮动
+        */
+        .clearfix1 {
+            clear: both;
+        }
+        /* 
+            单伪元素法
+            作用于父元素
+        */
+        .clearfix2::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        /* 
+            双伪元素法
+            作用于父元素
+        */
+        .clearfix3::before,
+        .clearfix3::after {
+            content: "";
+            display: table;
+            /* 
+                “display:table;”的CSS声明能够让一个HTML元素和它的子节点像table元素那样具有表格的特性。使用基于表格的CSS布局，使我们能够轻松定义一个单元格的边界、背景等样式
+            */
+        }
+        .clearfix3::after {
+            clear: both;
+        }
+        /* 
+            overflow法
+        */
+        .clearfix4 {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="one">one</div>
+    <div class="two">two</div> -->
+    <!-- <div class="banner">
+        <div class="left"></div>
+        <div class="right">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div> -->
+    <!-- 单伪元素法 -->
+    <div class="top clearfix4">
+        <div class="left"></div>
+        <div class="right"></div>
+        <!-- 额外标签法 -->
+        <!-- <div class="clearfix"></div> -->
+    </div>
+    <div class="bottom"></div>
+</body>
+
+</html>
