@@ -54,8 +54,8 @@
                     * space-evenly：弹性盒子沿主轴均匀排列，盒子与盒子，盒子与容器间距相等
                 侧轴对其方式
                 属性名：
-                    * align-items：当前弹性容器内所有弹性盒子的侧轴对齐方式（给弹性容器设置）当弹性盒子设置了align-self 属性时，容器的align-items 值则不再对它生效
-                    * align-self：单独控制某个弹性盒子的侧轴对齐方式（给弹性盒子设置）
+                    * align-items：当前弹性容器内所有弹性盒子的侧轴对齐方式（给弹性容器设置），当容器内弹性盒子设置了align-self 属性时，容器的align-items 属性则不再对它生效
+                    * align-self：单独控制容器内某个弹性盒子的侧轴对齐方式（给弹性盒子设置）
                 属性值：
                     * stretch：弹性盒子沿侧轴拉伸至铺满容器（盒子没有设置高度时生效，且为默认值）
                     * center：弹性盒子沿侧轴居中排列
@@ -244,7 +244,7 @@
                 * space-around：弹性盒子沿侧轴均匀排列，盒子两侧间距相等
                 * space-evenly：弹性盒子沿侧轴均匀排列，盒子与盒子，盒子与容器间距相等
             注意：该属性对单行弹性盒子模型无效，单行弹性盒子应该设置align-items
-            经过实验得出，当只有单行弹性盒子时设置了flex-wrap: wrap，那么此时align-content也会对单行弹性盒子生效，但值只有三个效果：flex-satrt/flex-end/center，其余的space-xxx效果与center一致
+            但经过实验得出，当只有单行弹性盒子时设置了flex-wrap: wrap，那么此时align-content也会对单行弹性盒子生效，但值只有三个效果：flex-satrt/flex-end/center，其余的space-xxx效果与center一致
         */
         .box10 {
             display: flex;
