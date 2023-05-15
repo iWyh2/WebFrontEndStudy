@@ -35,3 +35,28 @@ body {
     background-image: url(../images/logo.png);
     font-size: 0;
 }
+
+/* 2.2 头部导航 */
+.nav {
+    margin-left: 102px;
+}
+
+.nav ul {
+    display: flex;
+}
+
+.nav li {
+    margin-right: 24px;
+}
+
+.nav li a {
+    display: block;
+    padding: 6px 8px;
+    line-height: 27px;
+    font-size: 19px;
+}
+
+.nav li .active,
+.nav li a:hover {
+    border-bottom: 2px solid #00a4ff;
+}
