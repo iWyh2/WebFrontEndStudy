@@ -1,0 +1,37 @@
+/* 负责首页的样式设置 */
+/* 
+    CSS 实现思路
+        1. 画盒子，调整盒子范围 → 宽高背景色
+        2. 调整盒子位置 → flex 布局、内外边距
+        3. 控制图片、文字内容样式
+*/
+/* 1.整体布局 发现所有板块都是版心居中 那么提取出此部分代码 避免代码重复编写 */
+.wrapper {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+body {
+    background-color: #f3f5f7;
+}
+
+/* 2.头部区域 */
+.header {
+    height: 100px;
+    background-color: #fff;
+}
+
+.header .wrapper {
+    display: flex;
+    padding-top: 29px;
+}
+
+/* 2.1 头部logo */
+.logo a {
+    display: block;
+    width: 195px;
+    height: 41px;
+    /* background-color: pink; */
+    background-image: url(../images/logo.png);
+    font-size: 0;
+}
