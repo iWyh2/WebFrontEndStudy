@@ -60,3 +60,38 @@ body {
 .nav li a:hover {
     border-bottom: 2px solid #00a4ff;
 }
+
+/* 2.3 头部搜索框 */
+.search {
+    display: flex;
+    margin-left: 64px;
+    padding-left: 19px;
+    padding-right: 12px;
+    width: 412px;
+    height: 40px;
+    background-color: #f3f5f7;
+    border-radius: 20px;
+}
+
+.search input {
+    flex: 1;
+    border: 0;
+    /* 背景色设置为透明 */
+    background-color: transparent;
+    /* 去掉表单控件的焦点框 */
+    outline: none;
+}
+
+/* ::placeholder 选中就是 placeholder 属性文字样式*/
+.search input::placeholder {
+    font-size: 14px;
+    color: #999;
+}
+
+/* 父级是flex布局，子级变弹性盒子：加宽高生效 不用写display：block */
+.search a {
+    align-self: center;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/search.png);
+}
