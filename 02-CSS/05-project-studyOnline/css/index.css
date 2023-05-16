@@ -33,6 +33,7 @@ body {
     height: 41px;
     /* background-color: pink; */
     background-image: url(../images/logo.png);
+    /* 隐藏文字 */
     font-size: 0;
 }
 
