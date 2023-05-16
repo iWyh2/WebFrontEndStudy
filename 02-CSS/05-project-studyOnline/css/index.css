@@ -126,3 +126,26 @@ body {
     height: 420px;
     background-image: url(../uploads/banner.png);
 }
+
+/* 3.1 侧导航区域 */
+.banner .left {
+    padding: 3px 20px;
+    width: 191px;
+    height: 420px;
+    background-color: rgba(0, 0, 0, 0.42);
+}
+
+.banner .left a {
+    /* 块级：宽度是父级的100% */
+    display: block;
+    height: 46px;
+    background: url(../images/right.png) no-repeat right center;
+    line-height: 46px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.banner .left a:hover {
+    background-image: url(../images/right-hover.png);
+    color: #00a4ff;
+}
