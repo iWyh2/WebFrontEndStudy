@@ -105,7 +105,7 @@ body {
 
 .user .user-img {
     margin-right: 7px;
-    /* vertical-align 行内块和行内 垂直方向对齐方式 */
+    /* vertical-align 设置 行内块元素和行内元素的 垂直方向对齐方式 */
     vertical-align: middle;
 }
 
