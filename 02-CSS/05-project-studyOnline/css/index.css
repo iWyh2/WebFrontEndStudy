@@ -333,3 +333,34 @@ body {
     font-style: normal;
 }
 
+/* 6.前端工程师推荐区域 */
+.web-recommend .hd ul {
+    display: flex;
+}
+
+.web-recommend .hd li {
+    margin-right: 60px;
+    font-size: 16px;
+}
+
+.web-recommend .hd li .active {
+    color: #00a4ff;
+}
+
+.web-recommend .bd {
+    display: flex;
+    justify-content: space-between;
+}
+
+.web-recommend .bd .left {
+    width: 228px;
+}
+
+.web-recommend .bd .right {
+    width: 957px;
+}
+
+.web-recommend .bd .right .top {
+    margin-bottom: 15px;
+    height: 100px;
+}
