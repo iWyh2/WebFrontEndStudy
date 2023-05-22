@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,29 +9,102 @@
     <style>
         /* 
             定位作用：灵活的改变盒子在网页中的位置
-            属性名：position
-            属性值：
-                * left
-                * right
-                * top
-                * bottom
+            使用步骤
+                1.属性：position
+                    * relative 相对定位模式
+                        特点：
+                            1.相对定位是参照原来的位置 设置边偏移则相对自己原来位置移动
+                            2.不脱标，占用自己原来位置，其他标签不会占用，导致留白
+                            3.标签显示模式特点（块，行内）保持不变
+                        一般不会单独使用相对定位
+                    * absolute 绝对定位模式
+                        使用场景：子级使用绝对定位 父级使用相对定位（子绝父相）
+                        特点：
+                            1.脱标，不占位
+                            2.显示模式具备行内块特点，会改变元素显示模式为行内块
+                            3.设置边偏移则相对最近的已经定位的祖先元素改变位置
+                            4.如果祖先元素都未定位，则相对浏览器可视区（窗口）改变位置
+                        一般也不会单独使用绝对定位 需要配合相对定位使用
+                    * fixed 固定定位模式
+                        使用场景：使元素的位置在网页滚动时不会改变
+                        特点：
+                            1.脱标，不占位
+                            2.显示模式具备行内块特点，会改变元素显示模式为行内块
+                            3.设置边偏移相对浏览器窗口改变位置
+                2.属性：边偏移
+                    * left
+                    * right
+                    * top
+                    * bottom
+                        取值：??px / ??%
+            实现元素定位居中（相对于父级元素处于正中间）
+                步骤：
+                    1. 绝对定位（有父级就给父级设置相对定位，没有那就是相对于浏览器居中）
+                    2. 水平、垂直边偏移为 50%
+                    3. 子级向左、上移动自身尺寸的一半
+                        方法一： 左、上的外边距为 –尺寸的一半
+                        方法二： transform: translate(-50%, -50%)
+                            这里的50%为自己(宽,高)的50%，无需我们自己再去测量
+                        (transform 属性向元素应用 2D 或 3D 转换。
+                        该属性允许我们对元素进行旋转rotate、扭曲skew、
+                        缩放scale和移动translate以及矩阵变形matrix)
+                        transform属性配合我们进行定位使用
         */
         .big {
+            position: relative;
             width: 500px;
             height: 500px;
             background-color: pink;
         }
 
         .small {
+            position: relative;
+            top: -200px;
             width: 100px;
             height: 100px;
             background-color: skyblue;
         }
+
+        .son {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* margin-left: -200px;
+            margin-top: -100px; */
+            transform: translate(-50%,-50%);
+            width: 400px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .search {
+            background-color: skyblue;
+            width: 400px;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%);
+        }
     </style>
 </head>
+
 <body>
     <div class="big">
-        <div class="small"></div>
+        <div class="son"></div>
     </div>
+    <div class="small"></div>
+    <div class="center">center</div>
+    <div class="search"></div>
 </body>
+
 </html>
