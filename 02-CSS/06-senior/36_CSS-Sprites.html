@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS精灵</title>
+    <style>
+        /* 
+            CSS精灵
+            是一种网页图片应用处理方式。把网页中一些背景图片整合到一张图片文件中，再background-position 精确的定位出背景图片的位置
+            也就是用于处理网页中的小图
+            优点：减少服务器被请求次数，减轻服务器的压力，提高页面加载速度
+            实现步骤：
+            1. 创建盒子，盒子尺寸与小图尺寸相同
+            2. 设置盒子背景图为精灵图
+            3. 添加 background-position 属性，改变背景图位置
+​               3.1 使用 PxCook 测量小图片左上角坐标
+​               3.2 取负数坐标为 background-position 属性值（向左上移动图片位置）
+        */
+        .box {
+            width: 112px;
+            height: 110px;
+            background-color: pink;
+            background-image: url();
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+</body>
+</html>
