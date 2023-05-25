@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS修饰属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* CSS修饰属性 */
+        /* 
+            1.行内垂直对齐方式
+                属性名：vertical-align
+                属性值：
+                    * baseline：基线对齐（默认）
+                    * top：顶部对齐（最高内容顶部）
+                    * middle：居中对齐（常用）
+                    * bottom：底部对齐（最高内容底部）
+                对于文字和图片的对齐，默认是基线对齐，导致图片偏上，文字偏下
+                同时基线对齐，如果文字有超出基线的部分，会导致图片底部多出空白区域
+                一般谁占比越大，谁就设置这个属性
+                浏览器对于行内块和行内元素，会将其当成是文字处理，默认按照基线对齐，导致底部会留有空白区域
+                只要不是基线对齐就不会有空白
+                所以，想要去掉那部分留白，可以转为块级元素，或者是设置对齐方式
+                单独的图片去掉留白，用转为块级
+                图片和文字一起，那就设置vertical-align
+        */
+        .box1 {
+            border: 1px solid #000;
+        }
+        .cat {
+            /* vertical-align: baseline; */
+            /* vertical-align: middle; */
+            /* vertical-align: top; */
+            vertical-align: bottom;
+            /* display: block; */
+        }
+        /* 
+            2.过渡
+                作用：可以为一个元素在不同状态之间切换的时候添加过渡效果（动态切换）
+                属性名：transition（复合属性）
+                属性值：过渡的属性  花费时间 (s)
+                提示：
+                    * 过渡的属性可以是具体的 CSS 属性
+                    * 也可以为 all（两个状态属性值不同的所有属性，都产生过渡效果）（常用）
+                    * transition 是【设置给元素本身】的
+                一般transition和:hover配合使用
+        */
+        .huawei {
+            width: 200px;
+            height: 150px;
+            transition: all 1s;
+        }
+        .huawei:hover {
+            width: 500px;
+            height: 400px;
+        }
+        /* 
+            3.透明度
+                作用：设置整个元素的透明度（包含背景和内容）
+                属性名：opacity
+                属性值：0 – 1
+                    * 0：完全透明（元素不可见）
+                    * 1：不透明
+                    * 0-1之间小数：半透明
+        */
+        .box3 img {
+            opacity: 0.5;
+        }
+        /* 
+            4.光标类型
+                作用：鼠标悬停在元素上时指针显示样式
+                属性名：cursor
+                属性值：
+                    * default：默认值，通常为箭头
+                    * pointer：小手效果，提示可以点击
+                    * text：工字型，提示可以选择文字
+                    * move：十字型，提示可以移动
+        */
+        .box4 {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            /* cursor: pointer; */
+            /* cursor: text; */
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <img class="cat" src="https://tse1-mm.cn.bing.net/th/id/OIP-C.3wZInd0etWt1rCYy7aT9mQAAAA?w=196&h=196&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="">
+        这是一只小猫
+    </div>
+    <div class="box2">
+        <img class="huawei" src="../../img/huawei.jpg" alt="">
+    </div>
+    <div class="box3">
+        <img src="../../img/1.jpg" alt="">
+    </div>
+    <div class="box4">
+    </div>
+</body>
+</html>
