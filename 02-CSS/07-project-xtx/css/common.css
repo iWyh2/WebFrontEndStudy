@@ -1,1 +1,7 @@
 /* 各个页面相同的样式 */
+
+/* 版心居中 */
+.wrapper {
+    margin: 0 auto;
+    width: 1240px;
+}
