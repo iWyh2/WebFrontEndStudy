@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐变</title>
+    <style>
+        /* 
+            1.渐变
+            渐变是多个颜色逐渐变化的效果，一般用于设置盒子背景
+            分类：
+                * 线性渐变
+                * 径向渐变
+        */
+        /* 
+            2.线性渐变
+            background-image: linear-gradient(
+                渐变方向,
+                颜色1 终点位置,
+                颜色2 终点位置,
+                ......
+            );
+            取值：
+                * 渐变方向：可选（可不加）
+                    * to 方位名词
+                    * 角度度数
+                * 终点位置：可选（可不加）
+                    * 百分比
+        */
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-image: linear-gradient(
+                to right,
+                skyblue,
+                pink
+            );
+        }
+
+        /* 
+            产品展示案例
+        */
+        .box2 {
+            position: relative;
+            width: 300px;
+            height: 212px;
+            background-color: skyblue;
+        }
+
+        .box2 .title {
+            position: absolute;
+            left: 15px;
+            bottom: 20px;
+            z-index: 2;
+            width: 260px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .mask {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(
+                transparent,
+                rgba(0,0,0,0.5)
+            );
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .box2:hover .mask {
+            opacity: 1;
+        }
+
+        /* 
+            3.径向渐变
+            background-image: radial-gradient(
+                半径 at 圆心位置,
+                颜色1 终点位置,
+                颜色2 终点位置,
+                ......
+            );
+            取值：
+                * 半径可以是2条，则为椭圆
+                * 圆心位置取值：像素单位数值 / 百分比 / 方位名词
+        */
+        .round {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-image: radial-gradient(
+                100px at center center,
+                skyblue 50%,
+                pink
+            );
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: skyblue;
+            background-image: radial-gradient(
+                30px at center center,
+                rgba(255,255,255,0.5),
+                transparent
+            );
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2">
+        <div class="title">DceanStor Pacific 海量存储斩获2021 Interop金奖</div>
+        <div class="mask"></div>
+    </div>
+    <div class="round"></div>
+    <button></button>
+</body>
+</html>
