@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平面转换</title>
+    <style>
+        /* 
+            0.概念
+            作用：为元素添加动态效果，一般与过渡配合使用
+            概念：改变盒子在平面内的形态（位移、旋转、缩放、倾斜）
+            平面转换也叫 2D 转换，属性是 transform
+        */
+        .test1 {
+            margin: 100px 0;
+
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+            transition: all 1s;
+        }
+
+        /* 1.体验 */
+        .test1:hover {
+            transform: translate(800px) rotate(360deg) scale(2) skew(180deg);
+        }
+
+        /* 
+            2.平移
+            transform: translate(X轴移动距离, Y轴移动距离);
+            * 取值
+                * 像素单位数值
+                * 百分比（参照盒子自身尺寸计算结果）
+                * 正负均可
+            * 技巧
+                * translate() 只写一个值，表示沿着 X 轴移动
+                * 单独设置 X 或 Y 轴移动距离：translateX() 或 translateY()
+            * 平移实现绝对定位的居中效果
+                * 将之前设置margin为自身宽高一半的负值改为translate，值为-50%
+        */
+        .father {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 500px;
+            height: 300px;
+            transform: translate(-50%,-50%);
+            border: 1px solid #000;
+        }
+
+        .son {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            transition: all 0.5s;
+        }
+
+        .father:hover .son {
+            transform: translate(300px,200px);
+        }
+
+        /* 
+            双开门案例
+        */
+        .box1 {
+            display: flex;
+            margin: 0 auto;
+            width: 1366px;
+            height: 600px;
+            background-color: skyblue;
+            overflow: hidden;
+        }
+
+        .box1 .box2,
+        .box1 .box3 {
+            width: 50%;
+            height: 600px;
+            background-color: pink;
+            transition: all 0.5s;
+        }
+
+        .box1:hover .box2 {
+            transform: translateX(-100%);
+        }
+
+        .box1:hover .box3 {
+            transform: translateX(100%);
+        }
+
+        /* 
+            3.旋转
+            transform: rotate(旋转角度);
+            * 取值：角度单位是 deg
+            * 技巧
+                * 取值正负均可
+                * 取值为正，顺时针旋转
+                * 取值为负，逆时针旋转
+            * 默认情况下，转换原点是盒子中心点. 我们可以改变旋转中心
+                * transform-origin: 水平原点位置 垂直原点位置;
+                * 取值：
+                    * 方位名词（left、top、right、bottom、center）
+                    * 像素单位数值
+                    * 百分比
+        */
+        .box4 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all 0.5s;
+            transform-origin: right bottom;
+        }
+
+        .box4:hover {
+            transform: rotate(360deg);
+        }
+
+        /* 
+            4.多重转换
+            多重转换技巧：先平移再旋转
+            多重转换原理：以第一种转换方式坐标轴为准转换形态
+                * 旋转会改变网页元素的坐标轴向
+                * 先写旋转，则后面的转换效果的轴向以旋转后的轴向为准，会影响转换结果
+                * 复合写法不能拆开写，会有层叠性
+        */
+        .long {
+            width: 800px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+
+        .long .round {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            transition: all 0.5s;
+        }
+
+        .long:hover .round {
+            transform: translate(600px) rotate(360deg);
+        }
+
+        /* 
+            5.缩放
+            transform: scale(缩放倍数);
+            transform: scale(X轴缩放倍数, Y轴缩放倍数);
+            并不能通过简单的修改宽高而实现此效果
+            * 技巧
+                * 通常，只为 scale() 设置一个值，表示 X 轴和 Y 轴等比例缩放
+                * 取值大于1表示放大，取值小于1表示缩小
+        */
+        .box5 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            transition: all 0.5s;
+        }
+
+        .box5:hover {
+            transform: scale(2);
+        }
+
+        /* 
+            播放效果案例
+        */
+        .box66 {
+            width: 249px;
+            height: 170px;
+            margin: 50px auto;
+            background-color: skyblue;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box66::after {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -29px;
+            margin-top: -29px;
+            content: '';
+            width: 58px;
+            height: 58px;
+            background-color: tomato;
+            transform: scale(5);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .box6:hover .box66::after {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* 
+            6.倾斜
+            transform: skew();
+            * 取值：正负 角度度数 deg
+        */
+        .box7 {
+            width: 20px;
+            height: 100px;
+            background-color: pink;
+            transition: all 0.5s;
+        }
+
+        .box7:hover {
+            transform: skew(30deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="test1">1</div>
+    <div class="father">
+        <div class="son"></div>
+    </div> -->
+    <!-- 小案例1：双开门 -->
+    <!-- <div class="box1">
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div> -->
+    <div class="box4">4</div>
+    <div class="long">
+        <div class="round"></div>
+    </div>
+    <div class="box5"></div>
+    <!-- 小案例2：播放效果 -->
+    <div class="box6">
+        <div class="box66"></div>
+    </div>
+    <div class="box7"></div>
+</body>
+</html>
