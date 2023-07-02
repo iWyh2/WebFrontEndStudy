@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    <style>
+        /* 
+            * 过渡：实现两个状态间的变化过程
+            * 动画：实现多个状态间的变化过程，动画过程可控（重复播放、最终画面、是否暂停）
+        */
+        /* 
+            动画实现步骤：
+                1.定义动画
+                    方式一：两个状态形式
+                    @keyframes 动画名称 {
+                        from {当前状态的CSS}
+                        to {当前状态的CSS}
+                    }
+                    方式二：多个状态形式
+                    @keyframes 动画名称 {
+                        0% {当前状态的CSS}
+                        10% {当前状态的CSS}
+                        ...
+                        100% {当前状态的CSS}
+                    }
+                        * 百分比表示动画时长的百分比
+                2.使用动画
+                    animation: 动画名称 动画花费时长
+        */
+        .box1 {
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+            /* animation: change-1 2s 2s infinite alternate; */
+        }
+
+        .box1:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes change-1 {
+            from {
+                width: 200px;
+                height: 100px;
+            }
+            to {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @keyframes change-2 {
+            0% {
+                width: 200px;
+                height: 100px;
+            }
+            50% {
+                width: 300px;
+                height: 300px;
+            }
+            100% {
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                background-color: skyblue;
+            }
+        }
+        /* 
+            animation属性
+            animation: 动画名称 动画时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态
+                * 动画名称和动画时长必须赋值
+                * 取值不分先后顺序
+                * 如果有两个时间值，第一个时间表示动画时长，第二个时间表示延迟时间
+            
+            速度曲线：
+                * linear：匀速播放
+                * steps(数字)：逐帧播放
+            延迟时间：延迟多少时间后播放
+            重复次数：
+                * 数字：就是几次
+                * infinite：无限次
+            动画方向：
+                * alternate：反向播放
+            执行完毕时状态：
+                * backwards：保持第一帧状态（默认值）
+                * forwards：保持最后一帧状态
+
+            拆分写法：
+                * animation-name 动画名称
+                * animation-duration 动画时长
+                * animation-timing-function 速度曲线
+                * animation-delay 延迟时间
+                * animation-iteration-count 重复次数
+                * animation-direction 动画方向
+                * animation-fill-mode 执行完毕时状态
+
+            额外属性：
+                animation-play-state 暂停动画
+                常配合:hover使用，鼠标悬停时动画暂停
+                取值：paused
+        */
+        /* 
+            无缝动画原理：复制开头图片到结尾位置（图片累加宽度 = 区域宽度） 
+                * 防止区域留白
+        */
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box2 {
+            padding: 0;
+            width: 600px;
+            height: 112px;
+            border: 5px solid #000;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .box2 ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            animation: move 6s infinite linear;
+        }
+
+        .box2 .img1 {
+            width: 200px;
+            height: 112px;
+            background-color: pink;
+        }
+        .box2 .img2 {
+            width: 200px;
+            height: 112px;
+            background-color: skyblue;
+        }
+        .box2 .img3 {
+            width: 200px;
+            height: 112px;
+            background-color: peru;
+        }
+        .box2 .img4 {
+            width: 200px;
+            height: 112px;
+            background-color: palegreen;
+        }
+        .box2 .img5 {
+            width: 200px;
+            height: 112px;
+            background-color: orange;
+        }
+        .box2 .img6 {
+            width: 200px;
+            height: 112px;
+            background-color: purple;
+        }
+        .box2 .img7 {
+            width: 200px;
+            height: 112px;
+            background-color: red;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-1400px);
+            }
+        }
+
+        .box2:hover ul {
+            animation-play-state: paused;
+        }
+
+        /* 
+            逐帧动画 / 精灵动画
+            原理：
+                * steps(数字)：逐帧播放
+                * CSS精灵图
+            制作步骤：
+                1.准备显示区域
+                    盒子尺寸与一张精灵小图尺寸相同
+                2.定义动画
+                    移动背景图（移动距离 = 精灵图宽度）
+                3.使用动画
+                    steps(N)，N 与精灵小图个数相同 
+        */
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <!-- 走马灯 -->
+    <div class="box2">
+        <ul>
+            <li>
+                <div class="img1"></div>
+            </li>
+            <li>
+                <div class="img2"></div>
+            </li>
+            <li>
+                <div class="img3"></div>
+            </li>
+            <li>
+                <div class="img4"></div>
+            </li>
+            <li>
+                <div class="img5"></div>
+            </li>
+            <li>
+                <div class="img6"></div>
+            </li>
+            <li>
+                <div class="img7"></div>
+            </li>
+            <!-- 图片累加宽度 = 区域宽度 = 3 防止动画播完一轮留白 -->
+            <li>
+                <div class="img1"></div>
+            </li>
+            <li>
+                <div class="img2"></div>
+            </li>
+            <li>
+                <div class="img3"></div>
+            </li>
+            
+        </ul>
+    </div>
+</body>
+</html>
