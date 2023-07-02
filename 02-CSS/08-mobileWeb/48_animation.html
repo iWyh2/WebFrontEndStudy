@@ -189,6 +189,39 @@
                 3.使用动画
                     steps(N)，N 与精灵小图个数相同 
         */
+        .box3 {
+            width: 140px;
+            height: 140px;
+            background-image: url(../../img/bg_animation.png);
+            animation: 
+                run 1s infinite steps(12),
+                move-2 10s forwards linear
+            ;
+        }
+
+        @keyframes run {
+            from{
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1680px 0;
+            }
+        }
+        /* 
+            多组动画 一个盒子调用多个定义好的动画
+            animation: 
+                动画一,
+                动画二,
+                ... ...
+            ;
+
+            注：当动画的开始状态样式与盒子默认样式相同，可以省略动画开始状态代码
+        */
+        @keyframes move-2 {
+            100% {
+                transform: translateX(800px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -227,8 +260,8 @@
             <li>
                 <div class="img3"></div>
             </li>
-            
         </ul>
     </div>
+    <div class="box3"></div>
 </body>
 </html>
