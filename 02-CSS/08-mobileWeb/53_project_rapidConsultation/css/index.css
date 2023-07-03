@@ -43,9 +43,24 @@ header .icon-left {
 }
 header h3 {
   font-size: 0.45333333rem;
-  font-weight: medium;
 }
 header .note {
   font-size: 0.4rem;
   color: #2CB5A5;
+}
+.banner {
+  margin-top: 0.8rem;
+  margin-bottom: 0.90666667rem;
+  text-align: center;
+}
+.banner img {
+  margin-bottom: 0.48rem;
+  width: 6.4rem;
+  height: 5.49333333rem;
+}
+.banner p {
+  font-size: 0.42666667rem;
+}
+.banner p span {
+  color: #16C2A3;
 }
