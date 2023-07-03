@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rem适配方案</title>
+    <style>
+        /* 
+            rem简介
+                * rem单位，是相对单位
+                * rem单位是相对于HTML标签的字号计算结果
+                * 1rem = 1HTML字号大小
+            使用：
+                * 给HTML标签添加字号
+                * 使用rem书写尺寸
+            问题：
+                * 此处的使用无法实现移动端的自适应
+            原因：
+                * 固定了HTML的字号大小
+        */
+
+        /* 
+            思考：
+                * 手机屏幕大小不同，分辨率不同，如何设置不同的HTML标签字号？
+            解决：
+                * 媒体查询
+            
+            媒体查询：
+                媒体查询能够检测视口的宽度，然后编写差异化的 CSS 样式
+                当媒体特性条件成立, 执行对应的CSS样式
+            写法：
+                @media (媒体特性) {
+                    选择器 {
+                        CSS属性
+                    }
+                }
+        */
+        /* 此处注意电脑的缩放需要是100%，不然尺寸不对 */
+        @media (width:375px) {
+            body {
+                background-color: pink;
+            }
+        }
+
+        /* 
+            思考：
+                * 设备宽度不同，HTML标签字号设置成多少合适？
+            解决：
+                目前rem布局方案中，将网页等分成10份， HTML标签的字号为视口宽度的 1/10
+            问题：
+                不同的手机尺寸的视口不同，一个个的设置媒体查询非常的繁琐
+            解决：flexible.js
+        */
+        @media (width:375.33px) {
+            html {
+                font-size: 37.533px;
+            }
+        }
+
+        .box1 {
+            width: 5rem;
+            height: 3rem;
+            background-color: pink;
+        }
+
+        /* 
+            flexible.js：
+                flexible.js 是手机淘宝开发出的一个用来适配移动端的 js 库
+                核心原理就是根据不同的视口宽度给网页中 html 根节点设置不同的 font-size
+                从而解决一个个设置媒体查询的繁琐，不需要我们去写媒体查询
+        */
+
+        /* 
+            rem移动适配
+                思考：
+                    工作中的设计稿的尺寸是px还是rem？ ：px
+                    如何确定rem的数值？：
+                        1.确定基准根字号
+                            查看设计稿宽度，确定参考设备宽度（视口宽度），确定基准根字号（1/10视口宽度）
+                        2.计算rem单位的尺寸
+                            rem单位尺寸 = px单位数值 / 基准根字号
+                问题：懒得算
+                解决：less
+        */
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <script src="./js/flexible.js"></script>
+</body>
+</html>
