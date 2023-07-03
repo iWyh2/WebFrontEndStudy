@@ -1,2 +1,29 @@
 // out: ../css/index.css
 @import url(./base.less);
+
+//定义基准根字号
+@rootSize: 37.5rem;
+
+//头部
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 (15 / @rootSize);
+    height: (44 / @rootSize);
+    line-height: (44 / @rootSize);
+    // background-color: pink;
+
+    .icon-left {
+        font-size: (22 / @rootSize);
+    }
+
+    h3 {
+        font-size: (17 / @rootSize);
+        font-weight: medium;
+    }
+
+    .note {
+        font-size: (15 / @rootSize);
+        color: #2CB5A5;
+    }
+}
