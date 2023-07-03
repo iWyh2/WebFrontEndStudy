@@ -1,0 +1,94 @@
+// out: false
+//这是less的单行注释 不会被生成CSS注释
+/* 
+    这是less的块注释
+    shift + alt + a
+    会被生成CSS注释
+*/
+
+/* 
+    1.体验
+*/
+.box1 {
+    width: (68/37.5rem);
+    height: (47/37.5rem);
+    background-color: pink;
+    .box2 {
+        width: (29/37.5rem);
+    }
+}
+
+/* 
+    2.less运算
+        加减乘直接写计算表达式
+        除法需要添加小括号或.
+*/
+.box2 {
+    width: 100 + 200px;
+    height: 500 - 20px;
+    font-size: 10 * 2px;
+    // line-height: 90 ./ 3px; 会有红色错误提示 但没错
+    line-height: (90/3px);
+
+    width: (29px / 37.5rem);//多个单位以第一个单位为准
+}
+
+/* 
+    3.less嵌套
+        作用：快速生成后代选择器
+        语法：
+            .父选择器 {
+                父选择器样式
+                .子选择器 {
+                    子选择器样式
+                }
+            }
+        提示：用 & 表示当前选择器，不会生成后代选择器，通常配合伪类或伪元素使用
+*/
+.father {
+    width: 200px;
+    .son {
+        width: 100px;
+        .sonson {
+            width: 50px;
+            &:hover {
+                width: 10px;
+            }
+        }
+    }
+}
+
+/* 
+    4.less变量
+        作用：存储数据，方便使用和修改
+        语法：
+            * 定义变量：@变量名: 数据;
+            * 使用变量：CSS属性：@变量名;
+*/
+//定义变量
+@myColor: pink;
+//使用变量
+.box3 {
+    background-color: @myColor;
+}
+
+/* 
+    5.less导入
+        作用：导入 less 公共样式文件
+        语法：导入: @import “文件路径”;
+        提示：如果是 less 文件可以省略后缀
+*/
+// @import url(./52_less.less);
+// @import "./52_less.less";
+// @import "./52_less";
+
+/* 
+    6.less导出
+        作用：控制生成的CSS文件的保存位置
+        写法：在 less 文件的第一行添加 // out: 存储URL
+        提示：文件夹名称后面添加 /
+        例如：
+            // out: ./52_less.css
+    禁止导出：// out: false
+*/
+

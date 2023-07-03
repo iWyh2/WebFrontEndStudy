@@ -1,0 +1,74 @@
+/* 
+    这是less的块注释
+    shift + alt + a
+    会被生成CSS注释
+*/
+/* 
+    1.体验
+*/
+.box1 {
+  width: 1.81333333rem;
+  height: 1.25333333rem;
+  background-color: pink;
+}
+.box1 .box2 {
+  width: 0.77333333rem;
+}
+/* 
+    2.less运算
+        加减乘直接写计算表达式
+        除法需要添加小括号或.
+*/
+.box2 {
+  width: 300px;
+  height: 480px;
+  font-size: 20px;
+  line-height: 30px;
+  width: 0.77333333px;
+}
+/* 
+    3.less嵌套
+        作用：快速生成后代选择器
+        语法：
+            .父选择器 {
+                父选择器样式
+                .子选择器 {
+                    子选择器样式
+                }
+            }
+        提示：用 & 表示当前选择器，不会生成后代选择器，通常配合伪类或伪元素使用
+*/
+.father {
+  width: 200px;
+}
+.father .son {
+  width: 100px;
+}
+.father .son .sonson {
+  width: 50px;
+}
+.father .son .sonson:hover {
+  width: 10px;
+}
+/* 
+    4.less变量
+        作用：存储数据，方便使用和修改
+        语法：
+            * 定义变量：@变量名: 数据;
+            * 使用变量：CSS属性：@变量名;
+*/
+.box3 {
+  background-color: pink;
+}
+/* 
+    5.less导入
+        作用：导入 less 公共样式文件
+        语法：导入: @import “文件路径”;
+        提示：如果是 less 文件可以省略后缀
+*/
+/* 
+    6.less导出
+        作用：控制生成的CSS文件的保存位置
+        写法：在 less 文件的第一行添加 // out: 存储URL
+        提示：文件夹名称后面添加 /
+*/
