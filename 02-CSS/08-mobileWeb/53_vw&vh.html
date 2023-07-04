@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vw适配方案</title>
+    <style>
+        /* 
+            vw与vh
+                vw和vh是相对单位，相对视口尺寸计算结果
+                * vw：viewport width（1vw = 1/100视口宽度）
+                * vh：lviewport height (1vh = 1/100视口高度)
+        */
+
+        /* 
+            vw布局
+                1.确定设计稿对应的vw尺寸（1/100视口宽度）
+                    查看设计稿宽度，确定参考设备宽度，确定vw尺寸（1/100视口宽度）
+                2.vw单位尺寸 = px单位尺寸 / （1/100视口宽度）
+            vh布局那就换成vh单位即可
+        */
+        .box1 {
+            width: 18.133vw;
+            height: 7.733vw;
+            background-color: pink;
+        }
+
+        /* 
+            vw与vh不能混用，可能会有导致盒子变形的风险
+        */
+    </style>
+</head>
+<body>
+    <div class="box1">假设设备视口宽度375px</div>
+</body>
+</html>
