@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式布局</title>
+    <!-- 媒体查询的链接外部css文件 -->
+    <link rel="stylesheet" media="(max-width: 768px)" href="xxx.css">
+    <style>
+        /* 
+            响应式布局方案
+                1.媒体查询
+                2.bootstrap
+        */
+
+        /* 
+            1.媒体查询
+                * max-width：最大宽度（小于等于）
+                * min-width：最小宽度（大于等于）
+                判断网页的宽度
+        */
+        /* @media (max-width: 768px) {
+            body {
+                background-color: pink;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            body {
+                background-color: skyblue;
+            }
+        } */
+
+        /* 
+            媒体查询的书写顺序
+                * min-width（从小到大）
+                * max-width（从大到小）
+                媒体查询是从上到下检索，顺序会影响
+                因为CSS的层叠性
+        */
+
+        /* 
+            左侧隐藏案例
+        */
+        .box {
+            display: flex;
+        }
+
+        .left {
+            width: 300px;
+            height: 500px;
+            background-color: pink;
+        }
+
+        .main {
+            flex: 1;
+            height: 500px;
+            background-color: skyblue;
+        }
+
+        @media (max-width: 768px) {
+            .left {
+                display: none;
+            }
+        }
+
+        /* 
+            媒体查询完整写法 - 了解
+            @media 关键词 媒体类型 and (媒体特性) {CSS代码}
+            关键词
+                * and
+                * only
+                * not
+            媒体类型 - 媒体类型用来区分设备类型
+                * screen：屏幕设备
+                * 打印预览：print
+                * 阅读器：speech
+                * 不区分类型：all
+            媒体特性
+                * 视口宽高：width / height
+                * 视口最大宽高：max-width ；max-height
+                * 视口最小宽高：min-width；min-height
+                * 屏幕方向：orientation
+                    * protrait：竖屏
+                    * landscape：横屏
+        */
+
+        /* 
+            媒体查询 - 外部CSS
+            写法：
+            <link rel="stylesheet" media="关键词 媒体类型 and (媒体特性)" href="./css/index.css">
+            用于css代码多时
+            “关键词 媒体类型 and”可以省去
+            括号不可以省去
+        */
+
+        /* 
+            2.bootstrap
+            Bootstrap 是由 Twitter 公司开发维护的前端 UI 框架，
+            它提供了大量编写好的 CSS 样式，允许开发者结合一定 HTML 结构及JavaScript，
+            快速编写功能完善的网页及常见交互效果。     
+            中文官网：<https://www.bootcss.com/> 
+
+            使用步骤：
+                1.引入Bootstrap的CSS文件
+                2.调用类名：container（响应式布局版心类）
+
+            bootstrap栅格系统
+                作用：响应式布局
+                栅格化是指将整个网页的宽度分成12等份，每个盒子占用的对应的份数
+                例如：一行排4个盒子，则每个盒子占 3份 即可（12 / 4 = 3）
+                常用类名：
+                    * container: 响应式布局版心。后续的类都需要在此容器中使用
+                    * row：行，提供flex布局
+                    * col-*-*：列，提供一行盒子的排列，例如col-xxl-3，数字为盒子所占份数
+
+            bootstrap全局样式
+                按钮
+                    * btn：默认样式
+                    * btn-success：成功
+                    * btn-warning：警告
+                    * ……
+                    * 按钮尺寸：btn-lg / btn-sm
+                表格
+                    * table：默认样式
+                    * table-striped：隔行变色
+                    * table-success：表格颜色
+                    * ……
+
+            bootstrap组件
+                使用步骤:
+                    1.引入样式表
+                    2.引入js文件（如果组件有动态效果就需要引入，没有就不需要）
+                    3.去官网复制结构，修改内容使用
+
+            bootstrap字体图标
+                使用步骤：
+                    1.下载
+                        导航 / Extend：图标库 → 
+                            安装 → 
+                                下载安装包 →
+                                    bootstrap-icons-1.X.X.zip
+                    2.使用
+                        * 复制fonts文件夹到项目目录
+                        * 网页引入fonts中的bootstrap-icon.css文件
+                        * 调用CSS类名（图标对应的类名）
+        */
+    </style>
+    <link rel="stylesheet" href="../../../../../../App/Bootstrap/bootstrap-icons-1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../../../../App/Bootstrap/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- <div class="box">
+        <div class="left">left</div>
+        <div class="main">
+            响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果响应式网页效果
+        </div>
+    </div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-md-6 col-sm-12">1</div>
+            <div class="col-xl-3 col-md-6 col-sm-12">2</div>
+            <div class="col-xl-3 col-md-6 col-sm-12">3</div>
+            <div class="col-xl-3 col-md-6 col-sm-12">4</div>
+        </div>
+    </div>
+    <button class="btn btn-success btn-sm">按钮</button>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <span class="bi-apple"></span>
+</body>
+
+</html>
