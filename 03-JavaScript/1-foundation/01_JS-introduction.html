@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js简介</title>
+</head>
+<body>
+    <!-- 
+        JS 是什么？
+        1.JavaScript 是一门运行在浏览器的编程语言
+        2.JavaScript 由ECMAScript和WebAPIs组成
+            * ECMAScript 是基础语法
+            * WebApis 包含 DOM BOM 两部分
+     -->
+
+     <!-- 
+        JS 书写位置
+        1.HTML内部
+            * 放在/body上面是因为 浏览器按照HTML文件从上到下顺序加载
+        2.外部JS文件
+            * 通过script的src属性引入外部js文件
+            * 此时的script标签内部无需写js代码，会被忽略
+        3.内联JS
+            * 代码放在标签内部
+            * Vue会用到，学习时一般很少用
+      -->
+
+      <!-- 
+        JS的注释
+        1.单行 //
+        2.块 /* */
+
+        JS的结束符
+        ;（可以省略）
+       -->
+
+       <!-- 
+        JS的语法
+        1.输出
+            * 向页面body输出内容：document.write('要输出的内容')
+            * 向页面警告框输出内容：alert('要输出的内容')
+            * 向浏览器控制台输出内容：console.log('要输出的内容')
+        2.输入
+            * 向对话框输入：prompt('对话框提示内容')
+
+        Js代码执行顺序
+        1.按HTML文档流顺序执行
+        2.alert和prompt会跳过页面渲染先被执行
+        -->
+
+        <!-- 
+            JS字面量
+            1.数字字面量：2023
+            2.字符串字面量：'hello'
+            3.数组字面量：[]
+            4.对象字面量：{}
+         -->
+
+    <!-- <script src="./01_firstJS.js">
+        //弹出警告框
+        alert("Hello, world!");
+    </script> -->
+    <script>
+        document.write('<h1>JavaScript</h1>')
+        alert(':)')
+        console.log(':)')
+        prompt('请输入您的姓名:')
+    </script>
+</body>
+</html>
