@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS数据类型</title>
+</head>
+<body>
+    <!-- 
+        1.基本数据类型
+            * number：整数 小数 正数 负数
+            * string：通过单引号''、双引号""，或反引号``包裹的数据，一般单引号
+            * boolean：固定的值 `true` 和 `false`,也是两个布尔型字面量
+            * undifined 未定义：只有一个值 undefined，只声明变量，不赋值的情况下，变量的默认值为 undefined
+            * null 空类型：代表空的一个特殊值，赋值了，但是内容为空，是一个尚未创建的对象object类型
+        2.引用数据类型
+            * object
+        
+        JS是弱数据类型语言
+        只有当我们赋值了之后才可以确定是什么数据类型
+
+        %计算为求余数，判断某个数能否被整除
+
+        通过 typeof 关键字检测数据类型：typeof x / typeof(x)
+
+        NaN表示一个计算错误，not a number，任何与NaN的操作结果为NaN，类型为number
+
+        字符串一般外单内双 外双内单，也支持转义字符
+
+        +号实现字符串拼接，或者字符串与数字拼接
+
+        模板字符串：
+            拼接字符串和变量
+            ``包裹字符串
+            里面变量的位置变为 ${变量}
+            `xx,xx${varb}xxx.`
+        
+        prompt和表单取来的数字数据都是默认字符串类型
+        需要我们进行类型转换：
+            1.隐式转换
+                系统自动进行的
+                * +号两边只要有一个是字符串，就会把另外一个也转成字符串类型
+                * 除了+号以外的运算符，都会把数据转为数字类型
+                * +号可以作为正号，将字符串类型转为数字类型
+                * 任何数据和字符串相加，结果都是字符串
+            
+            2.显示转换
+                避免隐式转换，强制的
+                * Number(数据)：转换成数字类型
+                    如果字符串内有非数字，则转换失败，结果为NaN
+                * parseInt(数据)：只保留数据开头的整数,舍弃非整数部分,转换失败，则结果为NaN
+                * parseFloat(数据)：只保留数据开头的小数,舍弃非小数部分,转换失败，则结果为NaN
+
+     -->
+
+    <script>
+        // let r = prompt('please输入圆的半径')
+        // document.write(3.14*r*r)
+
+        // console.log(typeof 'iWyh2');
+
+        // let name = 'iWyh2'
+        // console.log(`我是${name}`);
+
+        // let name
+        // console.log(typeof name);
+
+        // let obj = null
+        // console.log(typeof obj);
+        // console.log(typeof null);
+        // console.log(typeof NaN);
+
+        // console.log('2' + 2);
+        // console.log('2' - '2');
+        // console.log('2' / '2');
+        // console.log('2' * '2');
+        // console.log(+'921');
+
+        // console.log(typeof Number(String(+'123')));
+        // console.log(parseInt('921px'));
+        // console.log(parseInt('px921px'));//not right → NaN
+        // console.log(parseFloat('9.21px'));
+
+        let num1 = +prompt("input first number please:")
+        let num2 = +prompt("input second number please:")
+        //let result = (+num1) + (+num2)
+        //let result = num1 + num2
+        //alert("the result of the two nums added is:" + result)
+        alert(`the result of the two nums added is ${num1 + num2}`)
+    </script>
+</body>
+</html>
