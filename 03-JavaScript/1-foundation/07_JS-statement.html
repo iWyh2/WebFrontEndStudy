@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS语句</title>
+    <style>
+        span {
+            width: 100px;
+            height: 25px;
+            display: inline-block;
+            margin: 2px;
+            border: 1px solid #000;
+            background-color: skyblue;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px skyblue;
+            text-align: center;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1.分支语句
+            if分支语句（重点）
+                if
+                if else
+                if else if ... else
+            三元运算符 条件?表达式1:表达式2, 一般用来取值
+            switch语句
+
+            - 当分支比较少时，if…else语句执行效率高
+            - 当分支比较多时，switch语句执行效率高，而且结构更清晰
+     -->
+    
+    <!-- 
+        2.循环语句
+            断点调试
+            while(true) === for(;;) === 无限循环
+     -->
+
+
+     <script>
+        // let num = prompt('请输入你的分数 :)')
+        // if (num >= 700) {
+        //     alert('抗刮聚类新，你考进了CQUT :(')
+        // } else {
+        //     alert('骚瑞，你重开吧 :)')
+        // }
+
+        // let name = prompt('输入用户名')
+        // let password = prompt('input your password')
+        // if (name === 'iWyh2' && password === '020920') {
+        //     alert('login success!')
+        // } else {
+        //     alert('login false')
+        // }
+
+        // let year = +prompt('input one yearnum')
+        // if (year%4 === 0 && year%100 !== 0 || year%400 === 0) {
+        //     alert('is 闰年')
+        // } else {
+        //     alert('is 平年')
+        // }
+
+        // 4 < 5 ? console.log(4) : console.log(5);
+        // let num = 4 < 5 ? 20 : 21
+
+        // let num1 = +prompt('input num1')
+        // let num2 = +prompt('input num2')
+        // alert(`最大的那个数是${num1 > num2 ? num1 : num2}`)
+
+        // let num = +prompt('input one number')
+        // alert(num < 10 ? '0' + num : num)
+
+        // let num1 = +prompt('input first num')
+        // let num2 = +prompt('input second num')
+        // let operator = prompt('input the operator')
+        // switch (operator) {
+        //     case '+':
+        //         console.log(num1 + num2);
+        //         break;
+        //     case '-':
+        //         console.log(num1 - num2);
+        //         break;
+        //     case '*':
+        //         console.log(num1 * num2);
+        //         break;
+        //     case '/':
+        //         console.log(num1 / num2);
+        //         break;
+        //     default:
+        //         console.log('Error!');
+        // }
+
+        // let i = 1
+        // while (i <= 5) {
+        //     console.log(`${i}`);
+        //     i++
+        // }
+
+        // while (true) {
+        //     let answer = prompt('do you love me?')
+        //     if (answer === 'love') {
+        //         break
+        //     }
+        // }
+
+        // let money = 1000
+        // while (true) {
+        //     let choose = prompt(`
+        //         选择要进行的操作:
+        //             1.查询
+        //             2.存钱
+        //             3.取钱
+        //             4.exit
+        //     `)
+        //     if (choose === '4') {
+        //         break
+        //     }
+        //     switch (choose) {
+        //         case '1':
+        //             alert(`${money}￥`)
+        //             break;
+        //         case '2':
+        //             let num = +prompt('输入要存入的金额')
+        //             money += num
+        //             alert('存入成功')
+        //             break;
+        //         case '3':
+        //             let take = +prompt('输入要取出的金额')
+        //             money -= take
+        //             alert('取出成功')
+        //             break;
+        //         default:
+        //             alert('Error!')
+        //             break;
+        //     }
+        // }
+
+        // let nameArr = ['Alen', 'Mode', 'Sendi', 'Kasa', 'Deron']
+        // let NullArr = []
+        // for (let i = 0; i < nameArr.length; i++) {
+        //     console.log(nameArr[i]);
+        // }
+        // console.log(NullArr[0])
+        // console.log(NullArr[1])
+        // console.log(NullArr[2])
+
+        // for(let i = 1; i <= 5; i++) {
+        //     for(let j = 1; j <= i; j++) {
+        //         document.write('😊')
+        //     }
+        //     document.write('<br>')
+        // }
+
+        for(let i = 1; i <= 9; i++) {
+            for(let j = 1; j <= i; j++) {
+                document.write(`<span>${j} * ${i} = ${i * j}</span>`)
+            }
+            document.write('<br>')
+        }
+     </script>
+</body>
+</html>
