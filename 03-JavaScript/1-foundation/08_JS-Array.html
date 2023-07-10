@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS数组</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            display: flex;
+            width: 700px;
+            height: 300px;
+            border-left: 1px solid pink;
+            border-bottom: 1px solid pink;
+            margin: 50px auto;
+            justify-content: space-around;
+            align-items: flex-end;
+            text-align: center;
+        }
+
+        .box>div {
+            display: flex;
+            width: 50px;
+            background-color: pink;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box div span {
+            margin-top: -20px;
+        }
+
+        .box div h4 {
+            margin-bottom: -35px;
+            width: 70px;
+            margin-left: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        JS数组
+            1.数组是什么？
+            ：是一种可以按顺序保存数据的数据类型
+            * 多个数据可以用数组保存起来，然后放到一个变量中，管理非常方便
+            * 可以存放任意类型数据
+            * 属于对象类型
+            * 长度是数组的属性
+
+            2.数组的基本使用
+                定义：[数据1,...,数据n] / new Array(数据1,...,数据n)
+                访问：循环 + 下标索引
+                修改：访问 + 赋值
+                操作：调用方法
+                    增：
+                    1. push(x1,x2,...,xn) 动态向数组的尾部添加一个单元 返回该数组新长度
+                    2. unshift(x1,x2,...,xn) 动态向数组头部添加一个单元 返回该数组新长度
+                    删：
+                    3. pop() 删除最后一个元素 返回该元素的值
+                    4. shift() 删除第一个单元 返回该元素的值
+                    修改；
+                    5. splice 动态删除/替换任意单元 （摘自MDN）
+                        splice(start, deleteCount, item1, item2, ..., itemN)
+                        参数：
+                            * start：从 0 开始计算的索引，表示要开始改变数组的位置，它会被转换成整数
+                                负索引从数组末尾开始计算——如果 start < 0，使用 start + array.length。
+                                如果 start < -array.length，使用 0。
+                                如果 start >= array.length，则不会删除任何元素，但是该方法会表现为添加元素的函数，添加所提供的那些元素。
+                                如果 start 被省略了（即调用 splice() 时不传递参数），则不会删除任何元素。这与传递 undefined 不同，后者会被转换为 0
+                            
+                            * deleteCount：一个整数，表示数组中要从 start 开始删除的元素数量
+                                如果省略了 deleteCount，或者其值大于或等于由 start 指定的位置到数组末尾的元素数量，那么从 start 到数组末尾的所有元素将被删除
+                                如果 deleteCount 是 0 或者负数，则不会移除任何元素
+
+                            * item1, …, itemN：从 start 开始要加入到数组中的元素
+                                如果不指定任何元素，splice() 将只从数组中删除元素
+                                如果你想要传递任何 itemN 参数，则应向 deleteCount 传递 Infinity 值，以删除 start 之后的所有元素
+
+                        返回值：一个包含了删除的元素的数组，没删就是空数组
+     -->
+
+
+    <!-- 
+        冒泡排序
+            1.思想
+                两两比较
+                大的往后挪 或 小的往后挪（两两交换）
+                n个数据做n-1次即可
+                最终最大或最小的在最后的位置
+                然后排除掉已经挪好的数据 重复以上操作
+            2.实现
+                * 双层循环
+                * 需要操作的次数 → 外层循环 操作次数（i, 从0开始计数） < 数据数 - 1（n个数据总共要操作 n-1 次）
+                * 每次操作的交换次数 → 内层循环 交换次数（j, 从0开始计数） < 总操作次数（n-1） - 这是第几次操作序号（i）
+                * 交换
+            3.代码
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - 1 - i; j++) {
+                    if (arr[j] > arr[j+1]) {
+                        let temp = arr[j+1]
+                        arr[j+1] = arr[j]
+                        arr[j] = temp
+                    }
+                }
+            }
+        
+        数组中排序方法：.sort()
+     -->
+    <script>
+        // let arr1 = [2, 6, 1, 7, 4]
+        // let sum = 0
+        // for(let i = 0; i < arr1.length; i++) {
+        //     sum += arr1[i]
+        // }
+        // console.log(sum)
+        // let average = sum / arr1.length
+        // console.log(average)
+
+        // let arr2 = [2, 6, 1, 77, 52, 25, 7]
+        // let max = arr2[0]
+        // let min = arr2[0]
+        // for (let i = 0; i < arr2.length; i++) {
+        //     if (arr2[i] > max) {
+        //         max = arr2[i]
+        //     }
+        //     if (arr2[i] < min) {
+        //         min = arr2[i]
+        //     }            
+        // }
+        // console.log(max)
+        // console.log(min)
+
+        // let arr3 = [3]
+        // console.log(arr3)
+        // arr3.push(4,5)
+        // console.log(arr3)
+        // arr3.unshift(1,2)
+        // console.log(arr3)
+
+        // let arr4 = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7]
+        // let newArr = []
+        // for (let i = 0; i < arr4.length; i++) {
+        //     if (arr4[i] > 10) {
+        //         newArr.push(arr4[i])
+        //     }
+        // }
+        // console.log(newArr)
+
+        // let arr5 = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7]
+        // let newArr = []
+        // for (let i = 0; i < arr5.length; i++) {
+        //     if (arr5[i] !== 0) {
+        //         newArr.push(arr5[i])
+        //     }
+        // }
+        // console.log(newArr);
+
+        let arr = []
+        for (let i = 0; i < 4; i++) {
+            let num = +prompt(`请输入第${i + 1}季度数据`)
+            arr.push(num)
+        }
+        document.write(`
+            <div class="box">
+        `)
+        for (let i = 0; i < arr.length; i++) {
+            document.write(`
+                <div style="height: ${arr[i]}px;">
+                    <span>${arr[i]}</span>
+                    <h4>第${i + 1}季度</h4>
+                </div>
+        `)
+        }
+        document.write(`
+            </div>
+        `)
+    </script>
+</body>
+
+</html>
