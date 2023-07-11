@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS函数</title>
+</head>
+<body>
+    <!-- 
+        函数：执行特定任务的代码块（代码复用）
+        1.声明：
+            一个完整函数包括关键字、函数名、形式参数、函数体、返回值5个部分
+            function 函数名(形参列表) {函数体}
+        
+        2.调用：
+            函数名() / 函数名(实参)
+            函数调用可以在函数声明之前
+
+        3.参数：
+            向函数传递参数，用于函数体执行
+            相当于属于函数的变量
+            声明（定义）函数时的形参没有数量限制，当有多个形参时使用 `,` 分隔
+            调用函数传递的实参要与形参的顺序一致
+            在定义函数时，参数可以给一个默认值 函数名(x=1,y=2)，当没有实参时就会用默认值
+            没有默认值时，不传入实参，那就是undefined
+
+        4.返回值：
+            函数体内的逻辑执行完毕后，函数外部获得函数内部的执行结果
+            使用return关键字返回结果，return 数据，返回值只有一个
+            返回值可以赋值给外部的任意变量（函数处于 = 右边）
+            函数内部只能出现1 次 return，并且 return 下一行代码不会再被执行，所以return后面的数据不要换行写
+            return会立即结束当前函数
+            函数可以没有return，这种情况默认返回值为 undefined
+            虽然只能返回一个数据，但是可以将函数内部多个数据放入一个数组返回，这样来实现返回多个数据
+     -->
+
+    <!-- 
+        断点调试时，按F11进入函数内部查看
+        两个相同函数，后面的覆盖前面的
+        参数不匹配时：不报错
+            实参多于形参，多的实参直接舍弃（函数内部有一个arguments，装着所有的实参）
+            实参少于形参，实参接收后，剩余的形参就是undefined
+     -->
+
+    <!-- 
+        作用域：
+            名字的可用性的代码范围就是这个名字的作用域
+            1.全局作用域
+                作用于所有代码执行的环境(整个 script 标签内部)或者一个独立的 js 文件
+                处于全局作用域内的变量，称为全局变量
+            2.局部作用域
+                作用于函数内的代码环境，就是局部作用域。 因为跟函数有关系，所以也称为函数作用域。
+                处于局部作用域内的变量称为局部变量
+            特殊情况：
+                如果函数内部，变量没有声明，直接赋值，也当全局变量看，强烈不推荐这样写
+                形参是函数的局部变量
+                当局部变量和全局变量同名，遵从就近原则，先在局部作用域里找相关变量，再在上一级作用域寻找
+     -->
+
+    <!-- 
+        匿名函数：没有名字的函数,无法直接使用
+        function () {}
+        1.使用方法
+            * 函数表达式
+                let func = function () {匿名函数体}
+                func()
+                此时函数的调用不可以写在函数表达式之前
+            * 立即执行函数：避免全局变量之间的污染
+                (function (形参) {匿名函数体})(实参)
+                此时这个语法写完，匿名函数体会立即执行，无需调用
+                第一个括号的意义是将匿名函数包裹，取一个匿名
+                第二个括号的意义就是调用匿名函数
+                另外一种写法（了解）：(function (形参) {匿名函数体} (实参))
+                多个立即执行函数之间，用‘;’隔开
+                立即执行函数可以有函数名
+                一般在第三方js文件中使用挺多
+     -->
+
+    <!-- 
+        逻辑中断：利用逻辑运算符的短路，让逻辑运算符右边代码不再执行
+            * &&与：左边为false就短路
+            * ||或：左边为true就短路
+                && 左边为假不再看右边，返回左值
+                && 两边都是假，返回左值
+                && 两边都是真，返回右值
+                || 左边为真不再看右边，返回左值
+                || 两边都是真，返回左值
+                || 两边都是假，返回右值
+            
+            undefined在逻辑运算中视为false
+     -->
+
+    <!-- 
+        转换boolean类型：Boolean(数据)
+            '', undefined, null, false, NaN 均转换为false，其余转换为true
+        
+        隐式转换：
+            有空字符串的加法，结果是数字的字符串
+            有空字符串的减法，空字符串转为0，再计算
+            null转为number类型后为0
+            undefined转为number类型后为NaN，所以带undefined的运算结果都是NaN
+            null == undefined为true，此时null和undefined值是一样的，看作0
+            但是null === undefined为false
+     -->
+
+    <script>
+        // function getSum(num1, num2) {
+        //     return num1 + num2
+        // }
+        // console.log(getSum(+prompt('num1'),+prompt('num2')))
+
+        // let arr = [3, 7, 9, 3, 6, 8]
+        // function getMax(arr = []) {
+        //     let max = 0
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (arr[i] > max) {
+        //             max = arr[i]
+        //         }
+        //     }
+        //     return max
+        // }
+        // console.log(getMax(arr))
+
+        function time(second = 0) {
+            let h = parseInt(second / 60 / 60 % 24)
+            let m = parseInt(second / 60 % 60)
+            let s = parseInt(second % 60)
+            h = h > 10 ? h : '0' + h
+            m = m > 10 ? m : '0' + m
+            s = s > 10 ? s : '0' + s
+            return `${h}时${m}分${s}秒`
+        }
+        let second = +prompt('输入总秒数')
+        let Time = time(second)
+        console.log(Time)
+    </script>
+</body>
+</html>
