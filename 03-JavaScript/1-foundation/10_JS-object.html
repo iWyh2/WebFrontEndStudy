@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS对象</title>
+    <style>
+        table {
+            width: 600px;
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        tr {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        table tr:nth-child(1) {
+            background-color: #ddd;
+        }
+
+        table tr:not(:first-child):hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        对象类型object：一种无序数据集合。它由属性和方法两部分构成
+        空对象为null，null的类型为object
+
+        1.声明
+            let 对象名 = {} / new Obejct()
+
+        2.属性
+            {
+                属性名: 属性值,
+                ...
+            }
+            属性成对出现
+            属性名可以用"" / ''包裹，但一般省略，除非有特殊字符和空格,中划线才需要包裹
+            
+        3.操作
+            查：对象名.属性 / 对象名['属性名'](当属性名为字符串时)
+            改：先查再重新赋值
+            增：对象名.新属性 = 所赋的值
+            删：delete 对象名.属性
+            改与增一样的语法，没有就是新增，有就是修改
+
+        4.方法
+            方法名 : function (形参列表) {方法体}
+            其本质是函数
+            *.方法是由方法名和函数两部分构成，它们之间使用 : 分隔
+            *.多个属性之间使用英文 , 分隔
+            *.方法是依附在对象中的函数
+            *.方法名可以使用 "" 或 ''，一般情况下省略，除非名称遇到特殊符号如空格、中横线等
+            *.可以与属性一样的添加新方法
+
+        5.调用
+            对象名.方法名(实参)
+
+        6.遍历对象
+            对象是无序的
+            用for in遍历
+            for (let key in 对象名) {
+                // 获得属性值
+                object[key]
+            }
+            key为自己取的键名，循环中每次依次得到对象的一个属性名字符串
+            由于得到的是字符串属性名，所以采用中括号object[key]来访问属性值
+
+        7.内置对象
+            JavaScript 中内置的对象
+            Math：是 JavaScript 中内置的对象，称为数学对象
+                属性：Math.PI，获取圆周率
+                方法：
+                    * Math.random，生成 0 到 1 间的随机数 [0,1)
+                    * Math.ceil，数字向上取整
+                    * Math.floor，数字向下取整
+                    * Math.round，四舍五入取整,离谁近就是谁
+                    * Math.max，在一组数中找出最大的（可以传数组，语法为 max(...数组名)）
+                    * Math.min，在一组数中找出最小的（可以传数组，语法为 max(...数组名)）
+                    * Math.pow，幂方法
+                    * Math.sqrt，平方根
+                    * Math.abs，取绝对值
+     -->
+    
+    <!-- 
+        随机数函数用法：
+            生成 [N,M] 之间的整数公式：Math.floor(Math.random() * (M - N + 1)) + N
+     -->
+
+    <table>
+        <caption>学生列表</caption>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>家乡</th>
+        </tr>
+        <!-- script放在这里 是因为需要将数据渲染到table标签内 -->
+        <script>
+            let students = [
+                { name: 'A', age: 10, gender: '男', hometown: '合江' },
+                { name: 'B', age: 11, gender: '女', hometown: '赤水' },
+                { name: 'C', age: 13, gender: '男', hometown: '重庆' },
+                { name: 'D', age: 15, gender: '女', hometown: '成都' }
+            ]
+
+            for (let i = 0; i < students.length; i++) {
+                document.write(`
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${students[i].name}</td>
+                    <td>${students[i].age}</td>
+                    <td>${students[i].gender}</td>
+                    <td>${students[i].hometown}</td>
+                </tr>
+                `)
+            }
+        </script>
+    </table>
+
+    <script>
+        // let object1 = {
+        //     name: 'iWyh2',
+        //     age: 21
+        // }
+        // console.log(object1);
+        // object1.age = 20
+        // console.log(object1)
+        // object1.address = "China"
+        // console.log(object1)
+        // delete object1.address
+        // console.log(object1)
+
+        // for (let key in object1) {
+        //     console.log(key);
+        //     console.log(object1[key]);
+        // }
+
+        // let students = [
+        //     { name: 'A', age: 10 },
+        //     { name: 'B', age: 11 },
+        //     { name: 'C', age: 13 },
+        //     { name: 'D', age: 15 }
+        // ]
+        // for (let i = 0; i < students.length; i++) {
+        //     for (let key in students[i]) {
+        //         console.log(students[i][key])
+        //     }
+        // }
+
+        // console.log(Math.floor(Math.random() * (10 + 1))) // 取 0 - 10 的整数
+
+        // let nameArr = ['A', 'B', 'C', 'D', 'E']
+        // let random = Math.floor(Math.random()*nameArr.length)
+        // console.log(nameArr[random]);
+        // nameArr.splice(random, 1)
+        // console.log(nameArr);
+
+        // function getRandom(N, M) {
+        //     return Math.floor(Math.random() * (M - N + 1)) + N
+        // }
+        // let random = getRandom(1,10)
+        // while (true) {
+        //     let num = +prompt('猜一个数字 :)')
+        //     if (num > random) {
+        //         alert('猜大了')
+        //     } else if (num < random) {
+        //         alert('猜小了')
+        //     } else {
+        //         alert(`猜对了，就是${random}`)
+        //         break
+        //     }
+        // }
+
+        let colorArr = ['1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
+        function getColor(flag = true) {
+            if (flag) {
+                let str = '#'
+                for (let i = 0; i < 6; i++) {
+                    let random  = Math.floor(Math.random() * 15)
+                    str += colorArr[random]
+                }
+                return str
+            } else {
+                return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`
+            }
+        }
+        console.log(getColor(true));
+        console.log(getColor(false));
+        console.log(getColor());
+    </script>
+</body>
+
+</html>
