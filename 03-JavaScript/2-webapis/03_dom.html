@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        /* .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+        } */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .slider {
+            width: 560px;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            width: 100%;
+            height: 320px;
+        }
+
+        .slider-wrapper img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .slider-footer {
+            height: 80px;
+            background-color: rgb(100, 67, 68);
+            padding: 12px 12px 0 12px;
+            position: relative;
+        }
+
+        .slider-footer .toggle {
+            position: absolute;
+            right: 0;
+            top: 12px;
+            display: flex;
+        }
+
+        .slider-footer .toggle button {
+            margin-right: 12px;
+            width: 28px;
+            height: 28px;
+            appearance: none;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .slider-footer .toggle button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .slider-footer p {
+            margin: 0;
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .slider-indicator {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-indicator li {
+            width: 8px;
+            height: 8px;
+            margin: 4px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0.4;
+            cursor: pointer;
+        }
+
+        .slider-indicator li.active {
+            width: 12px;
+            height: 12px;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        DOM
+        1.获取DOM对象：利用JS选择页面中的标签元素
+
+            * 根据CSS选择器获取DOM对象
+                ① 选择匹配的第一个元素：document.querySelector('CSS选择器')（加.）
+                    参数：一个或多个有效的CSS选择器（id，子代等）字符串
+                    返回值：匹配到的第一个DOM对象；没有就是null
+                    可以直接修改对象
+
+                ② 选择匹配的多个元素：document.querySelectorAll('CSS选择器')
+                    参数：一个或多个有效的CSS选择器（id，子代等）字符串
+                    返回值：匹配到的所有DOM对象的NodeList对象集合，是一个伪数组；没有就是null
+                    不可以直接修改对象，得遍历
+                    伪数组：有长度，有索引号，但没有pop和push等数组方法的数组
+
+            * 其他-了解
+                getElementById：根据id选择
+                getElementsByClassName：根据类名选择
+                getElementsByTagName：根据标签名选择
+
+        2.操作DOM对象
+            操作标签元素内容
+            * 对象.innerText属性
+                获取：对象.innerText
+                修改：重新赋值，值为纯文本，【不会解析标签】
+            * 对象.innerHTML属性
+                获取：对象.innerHTML
+                修改：重新赋值，【会解析标签】
+            两者的区别在于是否会解析标签
+            如果文本内容中包含 html标签时推荐使用 `innerHTML`，否则建议使用 `innerText` 属性
+
+            操作标签元素属性
+            * 操作常见属性：src / title ...
+                获取：对象.属性
+                修改：重新赋值，有就是改，没有就是增
+            * 操作样式属性
+                ① 对象.style.样式属性（有单位的要加上单位），样式属性为小驼峰式，修改单个样式
+                ② 对象.className = 'CSS类名'
+                    用于给一些标签加上后面写好的CSS样式，与CSS配合使用，修改多处样式
+                    此处是新值替换旧值，直接覆盖，可以 +=
+                    相当于调用CSS的类
+                ③ 对象.classList
+                    追加CSS类：对象.classList.add('CSS类名')（类名不加.）
+                    删除CSS类：对象.classList.remove('CSS类名')
+                    切换CSS类（有就删，没有就加）：对象.classList.toggle('CSS类名')
+                className与classList的区别在于classList的追加和删除不会影响之前的类名
+
+            操作表单元素属性
+                获取表单输入框里的值：表单输入框对象.value
+                操作值：赋值
+                获取表单组件类型：表单组件对象.type
+                表单组件的是否被勾选，选中的状态值都是布尔类型（disabled，checked，selected）
+
+            自定义属性：在html5中推出来了专门的data-自定义属性，由我们自己定义的属性
+                在标签上一律以data-开头
+                在DOM对象上一律以dataset对象方式获取，获取到的是该对象上的自定义属性集合
+                再用dataset.data-后面部分，获取该自定义属性
+
+        3.定时器 - 间歇函数
+            每隔一段时间自动执行一段代码，不需要我们手动触发
+            * 开启定时器：setInterval(函数,间隔时间,'Parameter 1','Parameter 2',...)
+                每隔一段时间调用这个函数，单位是毫秒ms
+                函数没有参数那就只需要传函数名与间隔
+                返回一个 interval ID，该 ID 唯一地标识定时器
+            * 关闭定时器：clearInterval(interval ID)
+     -->
+
+    <!-- 
+        body标签是唯一的，所以可以直接document.body
+        class在JS里是关键字
+        input单标签获取输入值用value
+        button也属于表单标签，但是是双标签，获取按钮的文本用innerHTML
+     -->
+
+    <!-- <div class="box">iWyh2</div>
+    <div id="wyh">iWyh2</div>
+    <ul class="nav">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="box2">
+        <strong>抽奖</strong>
+        <h1>一等奖: </h1>
+        <h2>二等奖: </h2>
+        <h3>三等奖: </h3>
+    </div> -->
+
+    <!-- <div class="slider">
+        <div class="slider-wrapper">
+            <img src="../../img/slider01.jpg" alt="" />
+        </div>
+        <div class="slider-footer">
+            <p>对人类来说会不会太超前了？</p>
+            <ul class="slider-indicator">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="toggle">
+                <button class="prev">&lt;</button>
+                <button class="next">&gt;</button>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <input type="text" name="" id="" value="iWyh2"> -->
+
+    <!-- <ul>
+        <li data-id="1" data-name="一"></li>
+        <li data-id="2" data-name="二"></li>
+        <li data-id="3" data-name="三"></li>
+        <li data-id="4" data-name="四"></li>
+        <li data-id="5" data-name="五"></li>
+    </ul> -->
+
+    <button class="btn" disabled>我已经阅读用户协议(10)</button>
+
+    <script>
+        // const box1 = document.querySelector('.box')
+        // console.dir(box1) // 专门打印对象使用的api
+        // const box2 = document.querySelector('#wyh')
+        // console.dir(box2)
+
+        // const lst = document.querySelectorAll('.nav li')
+        // for (let i = 0; i < lst.length; i++) {
+        //     console.log(lst[i])
+        // }
+
+        // const box = document.querySelector('.box')
+        // console.log(box.innerText)
+        // box.innerText = '<h1>niubi</h1>'
+        // console.log(box.innerText)
+        // console.log(box.innerHTML)
+        // box.innerHTML = '<h1>wocao</h1>'
+        // console.log(box.innerHTML)
+
+        // const box2_h1 = document.querySelector('.box2 h1')
+        // const box2_h2 = document.querySelector('.box2 h2')
+        // const box2_h3 = document.querySelector('.box2 h3')
+        // const persons = ['周杰伦','刘德华','周星驰','王钇欢','张学友']
+        // let Num = Math.floor(Math.random() * persons.length)
+        // let one = persons[Num]
+        // box2_h1.innerHTML = '一等奖: ' + one
+        // persons.splice(Num,1)
+        // Num = Math.floor(Math.random() * persons.length)
+        // let two = persons[Num]
+        // box2_h2.innerHTML = '二等奖: ' + two
+        // persons.splice(Num,1)
+        // Num = Math.floor(Math.random() * persons.length)
+        // let three = persons[Num]
+        // box2_h3.innerHTML = '三等奖: ' + three
+        // persons.splice(Num,1)
+
+        // const box = document.querySelector('.box')
+        // box.style.width = '300px'
+
+        // const sliderData = [
+        //     { url: '../../img/slider01.jpg', title: '对人类来说会不会太超前了？', color: 'rgb(100, 67, 68)' },
+        //     { url: '../../img/slider02.jpg', title: '开启剑与雪的黑暗传说！', color: 'rgb(43, 35, 26)' },
+        //     { url: '../../img/slider03.jpg', title: '真正的jo厨出现了！', color: 'rgb(36, 31, 33)' },
+        //     { url: '../../img/slider04.jpg', title: '李玉刚：让世界通过B站看到东方大国文化', color: 'rgb(139, 98, 66)' },
+        //     { url: '../../img/slider05.jpg', title: '快来分享你的寒假日常吧~', color: 'rgb(67, 90, 92)' },
+        //     { url: '../../img/slider06.jpg', title: '哔哩哔哩小年YEAH', color: 'rgb(166, 131, 143)' },
+        //     { url: '../../img/slider07.jpg', title: '一站式解决你的电脑配置问题！！！', color: 'rgb(53, 29, 25)' },
+        //     { url: '../../img/slider08.jpg', title: '谁不想和小猫咪贴贴呢！', color: 'rgb(99, 72, 114)' },
+        // ]
+        // const radomNum = parseInt(Math.random() * sliderData.length)
+        // const img = document.querySelector('.slider-wrapper img')
+        // img.src = sliderData[radomNum].url
+        // const p = document.querySelector('.slider-footer p')
+        // p.innerHTML = sliderData[radomNum].title
+        // const lis = document.querySelectorAll('.slider-indicator li')
+        // lis[radomNum].classList.toggle('active')
+        // const footer = document.querySelector('.slider-footer')
+        // footer.style.backgroundColor = sliderData[radomNum].color
+
+        // const input = document.querySelector('input')
+        // console.log(input.value)
+        // input.type = 'checkbox'
+        // input.checked = true
+
+        // const firstLi = document.querySelector('ul li')
+        // console.log(firstLi.dataset.id)
+        // console.log(firstLi.dataset.name)
+
+        // setInterval(function () {
+        //     console.log('hello')
+        // }, 1000)
+
+        // function func() {
+        //     console.log('cao')
+        // }
+        // setInterval(func,1000)
+
+        const btn = document.querySelector('.btn')
+        let i = 10
+        let id = setInterval(function () {
+            i--
+            btn.innerHTML = `我已经阅读用户协议(${i})`
+            if (i === 0) {
+                clearInterval(id)
+                btn.disabled = false
+                btn.innerHTML = '我已阅读并同意'
+            }
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
