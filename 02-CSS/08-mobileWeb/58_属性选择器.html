@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器</title>
+    <style>
+        a {
+            color: blue;
+        }
+
+        /* 以 "#" 开头的页面内部链接 */
+        a[href^="#"] {
+            background-color: gold;
+        }
+
+        /* 包含 "example" 的链接 */
+        a[href*="example"] {
+            background-color: silver;
+        }
+
+        /* 包含 "insensitive" 的链接，不区分大小写 */
+        a[href*="insensitive" i] {
+            color: cyan;
+        }
+
+        /* 包含 "cAsE" 的链接，区分大小写 */
+        a[href*="cAsE" s] {
+            color: pink;
+        }
+
+        /* 以 ".org" 结尾的链接 */
+        a[href$=".org"] {
+            color: red;
+        }
+
+        /* 以 "https" 开始，".org" 结尾的链接 */
+        a[href^="https"][href$=".org"] {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        CSS 属性选择器匹配那些具有特定属性或属性值的元素
+     -->
+
+    <!-- 
+        语法
+
+        [attr]
+        表示带有以 attr 命名的属性的元素。
+
+        [attr=value]
+        表示带有以 attr 命名的属性，且属性值为 value 的元素。
+
+        [attr~=value]
+        表示带有以 attr 命名的属性的元素，并且该属性是一个以空格作为分隔的值列表，其中至少有一个值为 value。
+
+        [attr|=value]
+        表示带有以 attr 命名的属性的元素，属性值为“value”或是以“value-”为前缀（- 为连字符，Unicode 编码为 U+002D）开头。典型的应用场景是用来匹配语言简写代码（如 zh-CN、zh-TW 可以用 zh 作为 value）。
+
+        [attr^=value]
+        表示带有以 attr 命名的属性，且属性值是以 value 开头的元素。
+
+        [attr$=value]
+        表示带有以 attr 命名的属性，且属性值是以 value 结尾的元素。
+
+        [attr*=value]
+        表示带有以 attr 命名的属性，且属性值至少包含一个 value 值的元素。
+
+        [attr operator value i]
+        在属性选择器的右方括号前添加一个用空格隔开的字母 i（或 I），可以在匹配属性值时忽略大小写（支持 ASCII 字符范围之内的字母）。
+
+        [attr operator value s] 实验性
+        在属性选择器的右方括号前添加一个用空格隔开的字母 s（或 S），可以在匹配属性值时区分大小写（支持 ASCII 字符范围之内的字母）
+     -->
+
+    <!-- 
+        示例
+
+        /* 存在 title 属性的 <a> 元素 */
+        a[title] {
+        color: purple;
+        }
+
+        /* 存在 href 属性并且属性值匹配"https://example.org"的 <a> 元素 */
+        a[href="https://example.org"] {
+        color: green;
+        }
+
+        /* 存在 href 属性并且属性值包含"example"的 <a> 元素 */
+        a[href*="example"] {
+        font-size: 2em;
+        }
+
+        /* 存在 href 属性并且属性值结尾是".org"的 <a> 元素 */
+        a[href$=".org"] {
+        font-style: italic;
+        }
+
+        /* 存在 class 属性并且属性值包含单词"logo"的<a>元素 */
+        a[class~="logo"] {
+        padding: 2px;
+        }
+     -->
+
+    <ul>
+        <li><a href="#internal">内部链接</a></li>
+        <li><a href="http://example.com">示例链接</a></li>
+        <li><a href="#InSensitive">非敏感内部链接</a></li>
+        <li><a href="http://example.org">示例 org 链接</a></li>
+        <li><a href="https://example.org">示例 https org 链接</a></li>
+    </ul>
+</body>
+
+</html>
