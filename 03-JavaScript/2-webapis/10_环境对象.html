@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环境对象-this</title>
+</head>
+<body>
+    <!-- 
+        环境对象指的是函数内部特殊的变量this，它代表着当前函数运行时所处的环境。
+
+        作用：让代码更简洁
+
+        1. this本质上是一个变量，数据类型为对象
+        2. 函数的调用方式不同this变量的值也不同
+        3. 【谁调用函数，this就是谁】是判断this值的粗略规则
+        4. 函数直接调用时实际上是window.函数()，所以普通函数this的值为window
+     -->
+
+    <script>
+        function fn() {
+            console.log(this)
+        }
+        fn()
+    </script>
+</body>
+</html>
