@@ -52,6 +52,7 @@
             事件名：'resize'
             检测屏幕宽度：给window添加resize事件，获取宽高
             获取元素可见部分宽高：clientWidth和clientHeight（不含边框，margin，滚动条）
+            只读属性
      -->
 
     <!-- 
@@ -67,6 +68,7 @@
                 获取元素距离自己定位父级元素的左，上距离
                 offsetLeft和offsetTop
                 是只读属性
+                element.getBoundingClientRect()：返回元素的大小及其相对于视口的位置（会随滚动条的滚动而改变）
      -->
 
     <script>
