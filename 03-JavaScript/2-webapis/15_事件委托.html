@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+</head>
+<body>
+    <!-- 
+        事件委托利用事件流的特征解决一些开发需求
+            优点：减少注册次数，提高程序性能
+            原理：利用事件冒泡的特点
+                给父元素注册注册事件，当我们去触发子元素时，会冒泡到父元素上，从而触发父元素事件
+            
+            事件对象的target属性是事件触发的那个对象
+            target.tagName是对象的标签名字
+     -->
+
+    <ul>
+        <li>111111</li>
+        <li>222222</li>
+        <li>333333</li>
+        <li>444444</li>
+        <li>555555</li>
+        <p>pppppp</p>
+    </ul>
+
+    <script>
+        const ul = document.querySelector('ul')
+        ul.addEventListener('click', function (e) {
+            if (e.target.tagName === 'LI') {
+                e.target.style.color = 'red'
+            }
+        })
+    </script>
+</body>
+</html>
