@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        .box {
+            margin: 30px auto;
+            position: relative;
+            height: 400px;
+            width: 300px;
+            background-color: skyblue;
+        }
+
+        .p1 {
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+        }
+
+        .time {
+            margin-top: 60px;
+            display: flex;
+            font-size: 50px;
+            justify-content: space-evenly;
+        }
+
+        .p2 {
+            position: absolute;
+            top: 300px;
+            left: 80px;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        .h {
+            background-color: black;
+            color: red;
+        }
+
+        .m {
+            background-color: black;
+            color: red;
+        }
+
+        .s {
+            background-color: black;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p class="p1"></p>
+        <h2>开摆倒计时</h2>
+        <div class="time">
+            <div class="h">00</div> : <div class="m">25</div> : <div class="s">20</div>
+        </div>
+        <p class="p2">21:00开摆</p>
+    </div>
+
+    <script>
+        let date = new Date()
+        const p1 = document.querySelector('.p1')
+        p1.innerHTML = `今天是${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`
+
+        const h = document.querySelector('.time .h')
+        const m = document.querySelector('.time .m')
+        const s = document.querySelector('.time .s')
+
+        const future = new Date('2023-7-25 21:00')
+        let time = 0
+
+        setInterval(function () {
+            date = new Date()
+            time = future.getTime() - date.getTime()
+
+            let hr = parseInt(time / 1000 / 60 / 60 % 24)
+            let mt = parseInt(time / 1000 / 60 % 60)
+            let sc = parseInt(time / 1000 % 60)
+
+            h.innerHTML = `${hr >= 10 ? hr : '0' + hr}`
+            m.innerHTML = `${mt >= 10 ? mt : '0' + mt}`
+            s.innerHTML = `${sc >= 10 ? sc : '0' + sc}`
+        }, 1000)
+    </script>
+</body>
+
+</html>
